@@ -19,9 +19,21 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func presse(sender: UIButton)
+    @IBAction func SetChildAlarm(sender: UIButton)
     {
-        d(what: "Camel are great!");
+        d(what: "Child")
+    }
+    
+    
+    @IBAction func SetPetAlarm(sender: UIButton)
+    {
+        d(what: "Pet")
+    }
+    
+    
+    @IBAction func SetOtherAlarm(sender: UIButton)
+    {
+        d(what: "Other")
     }
 
 

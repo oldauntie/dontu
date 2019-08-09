@@ -19,12 +19,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="reI-Do-QS9">
-                                <rect key="frame" x="106" y="132" width="170" height="526"/>
+                                <rect key="frame" x="122" y="185" width="170" height="526"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMt-xe-JuM" customClass="RoundButton" customModule="dontu" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
-                                        <color key="backgroundColor" red="1" green="0.55270987670000005" blue="0.002888324389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="170" id="JhS-8j-k5c"/>
                                             <constraint firstAttribute="width" secondItem="PMt-xe-JuM" secondAttribute="height" multiplier="1:1" id="X2o-rM-Ecc"/>
@@ -39,12 +39,12 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="presseWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T6e-vU-opw"/>
+                                            <action selector="SetChildAlarmWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dkj-Cd-l2N"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxr-Re-JEL" customClass="RoundButton" customModule="dontu" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="178" width="170" height="170"/>
-                                        <color key="backgroundColor" red="1" green="0.55270987670000005" blue="0.002888324389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="cxr-Re-JEL" secondAttribute="height" multiplier="1:1" id="5d8-KC-p1U"/>
                                             <constraint firstAttribute="width" constant="170" id="qpA-TX-JDD"/>
@@ -59,12 +59,12 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="presseWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pBG-Te-bd2"/>
+                                            <action selector="SetPetAlarmWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dG3-hx-ezq"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxF-wU-Gj4" customClass="RoundButton" customModule="dontu" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="356" width="170" height="170"/>
-                                        <color key="backgroundColor" red="1" green="0.55270987670000005" blue="0.002888324389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="mxF-wU-Gj4" secondAttribute="height" multiplier="1:1" id="FqQ-Ld-d4w"/>
                                             <constraint firstAttribute="width" constant="170" id="tUc-nQ-kl7"/>
@@ -79,7 +79,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="presseWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jwg-nx-fh6"/>
+                                            <action selector="SetOtherAlarmWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x1s-Dx-5hn"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -88,6 +88,10 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" image="settings" id="svn-z8-Rsh"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -98,5 +102,6 @@
         <image name="child_friendly" width="48" height="48"/>
         <image name="loyalty" width="48" height="48"/>
         <image name="pets" width="48" height="48"/>
+        <image name="settings" width="48" height="48"/>
     </resources>
 </document>
