@@ -8,11 +8,20 @@
 
 import UIKit
 
+
+
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    }
+    
+    
+    @IBAction func presse(sender: UIButton)
+    {
+        d(what: "Camel are great!");
     }
 
 
