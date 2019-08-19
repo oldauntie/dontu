@@ -8,7 +8,7 @@
 
 import Foundation
 
-func d(what: Any, label: String = "DEBUG")
+func d(_ what: Any, label: String = "DEBUG")
 {
     print( "\(label)" + "\n" + "\(type(of: what)): " + "\(what)" )
 }

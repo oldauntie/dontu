@@ -10,10 +10,10 @@
 		BF06006022FD5A4900C669F4 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF06005F22FD5A4900C669F4 /* Utility.swift */; };
 		BF462CB422FB561900FF37CC /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF462CB322FB561900FF37CC /* RoundButton.swift */; };
 		BF4A5DE622FB3E3800A0A646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A5DE522FB3E3800A0A646 /* AppDelegate.swift */; };
-		BF4A5DE822FB3E3800A0A646 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A5DE722FB3E3800A0A646 /* ViewController.swift */; };
 		BF4A5DEB22FB3E3800A0A646 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4A5DE922FB3E3800A0A646 /* Main.storyboard */; };
 		BF4A5DED22FB3E3A00A0A646 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4A5DEC22FB3E3A00A0A646 /* Assets.xcassets */; };
 		BF4A5DF022FB3E3A00A0A646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4A5DEE22FB3E3A00A0A646 /* LaunchScreen.storyboard */; };
+		BF4C6297230AEA1E004408E3 /* ControlRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C6296230AEA1E004408E3 /* ControlRoomViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +21,11 @@
 		BF462CB322FB561900FF37CC /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		BF4A5DE222FB3E3800A0A646 /* dontu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dontu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4A5DE522FB3E3800A0A646 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BF4A5DE722FB3E3800A0A646 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BF4A5DEA22FB3E3800A0A646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF4A5DEC22FB3E3A00A0A646 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF4A5DEF22FB3E3A00A0A646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF4A5DF122FB3E3A00A0A646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF4C6296230AEA1E004408E3 /* ControlRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlRoomViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +68,8 @@
 			children = (
 				BF06006122FD9A7F00C669F4 /* Oldauntie */,
 				BF4A5DE522FB3E3800A0A646 /* AppDelegate.swift */,
-				BF4A5DE722FB3E3800A0A646 /* ViewController.swift */,
 				BF4A5DE922FB3E3800A0A646 /* Main.storyboard */,
+				BF4C6296230AEA1E004408E3 /* ControlRoomViewController.swift */,
 				BF4A5DEC22FB3E3A00A0A646 /* Assets.xcassets */,
 				BF4A5DEE22FB3E3A00A0A646 /* LaunchScreen.storyboard */,
 				BF4A5DF122FB3E3A00A0A646 /* Info.plist */,
@@ -150,7 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF462CB422FB561900FF37CC /* RoundButton.swift in Sources */,
-				BF4A5DE822FB3E3800A0A646 /* ViewController.swift in Sources */,
+				BF4C6297230AEA1E004408E3 /* ControlRoomViewController.swift in Sources */,
 				BF4A5DE622FB3E3800A0A646 /* AppDelegate.swift in Sources */,
 				BF06006022FD5A4900C669F4 /* Utility.swift in Sources */,
 			);

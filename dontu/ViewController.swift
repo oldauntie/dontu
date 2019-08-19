@@ -29,13 +29,13 @@ class ViewController: UIViewController {
     @IBAction func SetPetAlarm(sender: UIButton)
     {
         ChangeState(sender: sender);
-        d(what: "Pet" + String(sender.isSelected));
+        d("Pet" + String(sender.isSelected));
     }
     
     
     @IBAction func SetOtherAlarm(sender: UIButton)
     {
-        d(what: "Other");
+        d("Other");
         ChangeState(sender: sender);
     }
     

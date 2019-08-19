@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h22-xM-xm4">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,16 +10,35 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Settings-->
+        <scene sceneID="SZL-r4-ZKM">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="dontu" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="zHX-ri-jb1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vPQ-Z8-Xx3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Ipl-fA-o6l"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" landscapeImage="settings" id="lu4-Mj-3z3">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="0.0"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BjR-Y0-O5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="775" y="273"/>
+        </scene>
+        <!--ControlRoom-->
+        <scene sceneID="23Z-1t-4RW">
+            <objects>
+                <viewController title="Bluetooth" id="7Xa-rp-jJw" userLabel="ControlRoom" customClass="ControlRoomViewController" customModule="dontu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Psk-ht-m8n">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="reI-Do-QS9">
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="reI-Do-QS9">
                                 <rect key="frame" x="122" y="185" width="170" height="526"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMt-xe-JuM" customClass="RoundButton" customModule="dontu" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
@@ -38,7 +57,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="SetChildAlarmWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dkj-Cd-l2N"/>
+                                            <action selector="EnableChildControl:" destination="7Xa-rp-jJw" eventType="touchUpInside" id="UCJ-c7-yea"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxr-Re-JEL" customClass="RoundButton" customModule="dontu" customModuleProvider="target">
@@ -58,7 +77,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="SetPetAlarmWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dG3-hx-ezq"/>
+                                            <action selector="EnablePetControl:" destination="7Xa-rp-jJw" eventType="touchUpInside" id="UBD-L0-cMe"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxF-wU-Gj4" customClass="RoundButton" customModule="dontu" customModuleProvider="target">
@@ -78,56 +97,45 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="SetOtherAlarmWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x1s-Dx-5hn"/>
+                                            <action selector="EnableOtherControl:" destination="7Xa-rp-jJw" eventType="touchUpInside" id="D5t-Pu-b2X"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNJ-7p-5Lg" customClass="RoundButton" customModule="dontu" customModuleProvider="target">
-                                <rect key="frame" x="346" y="750" width="48" height="48"/>
-                                <state key="normal" image="settings"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaV-DA-NUR">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <color key="barTintColor" red="1" green="0.55270987670000005" blue="0.002888324389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <items>
-                                    <navigationItem title="DontU" id="L73-Ss-DES"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="jaV-DA-NUR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2ay-eX-EDd"/>
-                            <constraint firstItem="reI-Do-QS9" firstAttribute="top" secondItem="jaV-DA-NUR" secondAttribute="bottom" constant="97" id="AGJ-06-1In"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cNJ-7p-5Lg" secondAttribute="trailing" constant="20" id="COt-u8-zVp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cNJ-7p-5Lg" secondAttribute="bottom" constant="15" id="Myj-3v-Dgw"/>
-                            <constraint firstItem="jaV-DA-NUR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UP8-Oe-uC3"/>
-                            <constraint firstItem="jaV-DA-NUR" firstAttribute="centerX" secondItem="reI-Do-QS9" secondAttribute="centerX" id="VAn-pa-M6F"/>
-                            <constraint firstItem="jaV-DA-NUR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ya1-Tz-Q3a"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="nyf-f7-EJG"/>
                     </view>
-                    <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBarItem key="tabBarItem" title="Control" image="face" landscapeImage="face" id="4oe-dw-ez1">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="0.0"/>
+                    </tabBarItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="My1-fj-VYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="112.5"/>
+            <point key="canvasLocation" x="775" y="-376"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="a87-rH-N9x">
+            <objects>
+                <tabBarController id="h22-xM-xm4" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hwd-BQ-fQV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="7Xa-rp-jJw" kind="relationship" relationship="viewControllers" id="LIp-MC-WsD"/>
+                        <segue destination="zHX-ri-jb1" kind="relationship" relationship="viewControllers" id="4c6-x9-biM"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X3w-Og-SNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-587" y="-126"/>
         </scene>
     </scenes>
     <resources>
         <image name="child_friendly" width="48" height="48"/>
+        <image name="face" width="48" height="48"/>
         <image name="loyalty" width="48" height="48"/>
         <image name="pets" width="48" height="48"/>
         <image name="settings" width="48" height="48"/>
