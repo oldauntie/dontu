@@ -14,6 +14,8 @@
 		BF4A5DED22FB3E3A00A0A646 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4A5DEC22FB3E3A00A0A646 /* Assets.xcassets */; };
 		BF4A5DF022FB3E3A00A0A646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4A5DEE22FB3E3A00A0A646 /* LaunchScreen.storyboard */; };
 		BF4C6297230AEA1E004408E3 /* ControlRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C6296230AEA1E004408E3 /* ControlRoomViewController.swift */; };
+		BF4C629B230AF508004408E3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BF4C629A230AF508004408E3 /* Settings.bundle */; };
+		BF4C629D230AF85E004408E3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C629C230AF85E004408E3 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		BF4A5DEF22FB3E3A00A0A646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF4A5DF122FB3E3A00A0A646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF4C6296230AEA1E004408E3 /* ControlRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlRoomViewController.swift; sourceTree = "<group>"; };
+		BF4C629A230AF508004408E3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		BF4C629C230AF85E004408E3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,9 +70,11 @@
 		BF4A5DE422FB3E3800A0A646 /* dontu */ = {
 			isa = PBXGroup;
 			children = (
+				BF4C629A230AF508004408E3 /* Settings.bundle */,
 				BF06006122FD9A7F00C669F4 /* Oldauntie */,
 				BF4A5DE522FB3E3800A0A646 /* AppDelegate.swift */,
 				BF4A5DE922FB3E3800A0A646 /* Main.storyboard */,
+				BF4C629C230AF85E004408E3 /* SettingsViewController.swift */,
 				BF4C6296230AEA1E004408E3 /* ControlRoomViewController.swift */,
 				BF4A5DEC22FB3E3A00A0A646 /* Assets.xcassets */,
 				BF4A5DEE22FB3E3A00A0A646 /* LaunchScreen.storyboard */,
@@ -136,6 +142,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4C629B230AF508004408E3 /* Settings.bundle in Resources */,
 				BF4A5DF022FB3E3A00A0A646 /* LaunchScreen.storyboard in Resources */,
 				BF4A5DED22FB3E3A00A0A646 /* Assets.xcassets in Resources */,
 				BF4A5DEB22FB3E3800A0A646 /* Main.storyboard in Resources */,
@@ -152,6 +159,7 @@
 				BF462CB422FB561900FF37CC /* RoundButton.swift in Sources */,
 				BF4C6297230AEA1E004408E3 /* ControlRoomViewController.swift in Sources */,
 				BF4A5DE622FB3E3800A0A646 /* AppDelegate.swift in Sources */,
+				BF4C629D230AF85E004408E3 /* SettingsViewController.swift in Sources */,
 				BF06006022FD5A4900C669F4 /* Utility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,7 +237,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -284,7 +292,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -301,6 +309,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FYB23VMPY;
 				INFOPLIST_FILE = dontu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -319,6 +328,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FYB23VMPY;
 				INFOPLIST_FILE = dontu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

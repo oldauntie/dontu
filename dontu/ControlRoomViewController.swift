@@ -21,6 +21,7 @@ class ControlRoomViewController: UIViewController {
     @IBAction func EnablePetControl(_ sender: UIButton) {
         ChangeState(sender);
     }
+    
     @IBAction func EnableOtherControl(_ sender: UIButton) {
         ChangeState(sender);
     }

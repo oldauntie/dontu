@@ -13,20 +13,35 @@
         <!--Settings-->
         <scene sceneID="SZL-r4-ZKM">
             <objects>
-                <viewController id="zHX-ri-jb1" sceneMemberID="viewController">
+                <viewController id="zHX-ri-jb1" customClass="SettingsViewController" customModule="dontu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vPQ-Z8-Xx3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pEO-Nd-lwu">
+                                <rect key="frame" x="91" y="167" width="269" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="zHX-ri-jb1" id="Qt3-u1-cGN"/>
+                                </connections>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Ipl-fA-o6l"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" landscapeImage="settings" id="lu4-Mj-3z3">
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="0.0"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="firstName" destination="pEO-Nd-lwu" id="JGm-MR-Blb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BjR-Y0-O5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="775" y="273"/>
+            <point key="canvasLocation" x="773.91304347826087" y="272.54464285714283"/>
         </scene>
         <!--ControlRoom-->
         <scene sceneID="23Z-1t-4RW">
