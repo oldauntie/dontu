@@ -8,6 +8,34 @@
 	<array>
 		<dict>
 			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Distance</string>
+			<key>Key</key>
+			<string>Distance</string>
+			<key>DefaultValue</key>
+			<integer>0</integer>
+			<key>Titles</key>
+			<array>
+				<string>immediatly when disconnected</string>
+				<string>1 mt.</string>
+				<string>2 mt.</string>
+				<string>3 mt.</string>
+				<string>5 mt.</string>
+				<string>8 mt.</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>0</integer>
+				<string>1</string>
+				<string>2</string>
+				<string>3</string>
+				<string>5</string>
+				<string>8</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
 			<string>First Name</string>
