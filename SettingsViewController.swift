@@ -11,28 +11,42 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var firstName: UITextField!
+    @IBOutlet weak var distance: UISegmentedControl!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated);
+        super.viewDidAppear(animated)
         
-        let userDefaults = UserDefaults.standard;
+        let userDefaults = UserDefaults.standard
         
-        firstName.text = userDefaults.object(forKey: "FirstName") as? String;
+        firstName.text = userDefaults.object(forKey: "FirstName") as? String
+        
+        distance.selectedSegmentIndex  = userDefaults.integer(forKey: "Distance")
 
-        d("appaio");
+        d("appaio")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated);
+        super.viewDidDisappear(animated)
         
-        d("scompaio");
+        let userDefaults = UserDefaults.standard
+        
+        userDefaults.set(distance.selectedSegmentIndex, forKey: "Distance")
+        
+        d( String(distance.selectedSegmentIndex))
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
     /*

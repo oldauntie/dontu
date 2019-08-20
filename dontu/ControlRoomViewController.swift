@@ -19,31 +19,31 @@ class ControlRoomViewController: UIViewController {
     }
     
     @IBAction func EnablePetControl(_ sender: UIButton) {
-        ChangeState(sender);
+        ChangeState(sender)
     }
     
     @IBAction func EnableOtherControl(_ sender: UIButton) {
-        ChangeState(sender);
+        ChangeState(sender)
     }
     
     @IBAction func EnableChildControl(_ sender: UIButton) {
-        d("nanna");
-        ChangeState(sender);
+        d("nanna")
+        ChangeState(sender)
     }
     
     private func ChangeState(_ sender: UIButton)
     {
-        sender.isSelected = !sender.isSelected;
+        sender.isSelected = !sender.isSelected
         
         if(sender.isSelected == true)
         {
             // sender.setImage(UIImage(named:"pets"), for: UIControl.State.normal);
-            sender.backgroundColor = UIColor.orange;
+            sender.backgroundColor = UIColor.orange
         }
         else
         {
             // sender.setImage(UIImage(named:"child_friendly"), for: UIControl.State.normal);
-            sender.backgroundColor = UIColor.white;
+            sender.backgroundColor = UIColor.white
         }
     }
     

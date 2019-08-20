@@ -18,8 +18,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JZz-cW-3ST">
+                                <rect key="frame" x="20" y="434" width="374" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="JZz-cW-3ST" secondAttribute="height" multiplier="187:14" id="aW1-Bf-38Q"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="0 mt."/>
+                                    <segment title="1 mt."/>
+                                    <segment title="2 mt."/>
+                                    <segment title="3 mt."/>
+                                    <segment title="5 mt."/>
+                                    <segment title="8 mt."/>
+                                </segments>
+                            </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pEO-Nd-lwu">
-                                <rect key="frame" x="91" y="167" width="269" height="30"/>
+                                <rect key="frame" x="82" y="369" width="269" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -30,12 +44,17 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JZz-cW-3ST" firstAttribute="centerY" secondItem="vPQ-Z8-Xx3" secondAttribute="centerY" id="142-68-MUp"/>
+                            <constraint firstItem="JZz-cW-3ST" firstAttribute="centerX" secondItem="vPQ-Z8-Xx3" secondAttribute="centerX" id="xyo-Wt-flZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ipl-fA-o6l"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" landscapeImage="settings" id="lu4-Mj-3z3">
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="0.0"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="distance" destination="JZz-cW-3ST" id="Rvz-W0-eSK"/>
                         <outlet property="firstName" destination="pEO-Nd-lwu" id="JGm-MR-Blb"/>
                     </connections>
                 </viewController>
