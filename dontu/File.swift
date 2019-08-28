@@ -8,19 +8,16 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController, UITextFieldDelegate {
+class SettingsViewController: UIViewController {
     
+    @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var distance: UISegmentedControl!
-    @IBOutlet weak var other: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
-        view.addGestureRecognizer(tap)
-        
-        other.delegate = self
     }
     
     
@@ -29,28 +26,27 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         
         let userDefaults = UserDefaults.standard
         
-        other.text = userDefaults.object(forKey: "Other") as? String
+        firstName.text = userDefaults.object(forKey: "FirstName") as? String
+        
         distance.selectedSegmentIndex  = userDefaults.integer(forKey: "Distance")
+        
+        d("appaio")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         let userDefaults = UserDefaults.standard
+        
         userDefaults.set(distance.selectedSegmentIndex, forKey: "Distance")
-        userDefaults.set(other.text, forKey: "Other")
+        
+        d( String(distance.selectedSegmentIndex))
     }
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
- 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
     
     /*

@@ -27,20 +27,20 @@
 			<key>Values</key>
 			<array>
 				<integer>0</integer>
-				<string>1</string>
-				<string>2</string>
-				<string>3</string>
-				<string>5</string>
-				<string>8</string>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
 			</array>
 		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
-			<string>First Name</string>
+			<string>Other reminder</string>
 			<key>Key</key>
-			<string>FirstName</string>
+			<string>Other</string>
 		</dict>
 	</array>
 </dict>
