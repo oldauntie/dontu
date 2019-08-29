@@ -19,17 +19,74 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LyJ-Vd-Gog">
-                                <rect key="frame" x="16" y="51" width="281" height="123"/>
+                                <rect key="frame" x="16" y="51" width="281" height="361.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Car Audio Kit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZI-5e-Qli" userLabel="Available Car Audio Kit (label)">
+                                        <rect key="frame" x="0.0" y="0.0" width="171.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o2c-yy-E2e" userLabel="Available Audio PortName">
+                                        <rect key="frame" x="0.0" y="28.5" width="221" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="221" id="o3T-bX-jC1"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vz-a3-w1e" userLabel="Available Audio PortType">
+                                        <rect key="frame" x="0.0" y="66.5" width="31.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYn-dh-143" userLabel="Available Audio UID">
+                                        <rect key="frame" x="0.0" y="89" width="24.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUM-1m-XIl">
+                                        <rect key="frame" x="0.0" y="111.5" width="30" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.55270987670000005" blue="0.002888324389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Use"/>
+                                        <connections>
+                                            <action selector="useTouchUpInside:" destination="zHX-ri-jb1" eventType="touchUpInside" id="QSl-ed-ZMb"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Car Audio Kit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47G-sg-WwZ" userLabel="Selected Car Audio Kit (label)">
+                                        <rect key="frame" x="0.0" y="149.5" width="171.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j5F-G0-hrl" userLabel="Selected Audio PortName">
+                                        <rect key="frame" x="0.0" y="178" width="221" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="221" id="fWa-oF-yog"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dye-gF-rNZ" userLabel="Selected Audio UID">
+                                        <rect key="frame" x="0.0" y="216" width="24.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pd3-k3-ZZq">
-                                        <rect key="frame" x="0.0" y="0.0" width="116.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="238.5" width="116.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write other things to remember" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BKe-M4-GcV" userLabel="Other">
-                                        <rect key="frame" x="0.0" y="28.5" width="281" height="30"/>
+                                        <rect key="frame" x="0.0" y="267" width="281" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="281" id="ZDW-it-pad"/>
                                         </constraints>
@@ -38,13 +95,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance to reach before activation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ed2-dq-KMC">
-                                        <rect key="frame" x="0.0" y="66.5" width="267" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="305" width="267" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JZz-cW-3ST">
-                                        <rect key="frame" x="0.0" y="95" width="281" height="29"/>
+                                        <rect key="frame" x="0.0" y="333.5" width="281" height="29"/>
                                         <segments>
                                             <segment title="0 mt."/>
                                             <segment title="1 mt."/>
@@ -64,8 +121,13 @@
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="0.0"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="available_portname" destination="o2c-yy-E2e" id="WCt-3c-LPZ"/>
+                        <outlet property="available_porttype" destination="1vz-a3-w1e" id="7Hx-xu-sZG"/>
+                        <outlet property="available_uid" destination="mYn-dh-143" id="NAA-n2-snT"/>
                         <outlet property="distance" destination="JZz-cW-3ST" id="Rvz-W0-eSK"/>
                         <outlet property="other" destination="BKe-M4-GcV" id="tA8-vk-pDz"/>
+                        <outlet property="selected_portname" destination="j5F-G0-hrl" id="bLI-Kc-czV"/>
+                        <outlet property="selected_uid" destination="dye-gF-rNZ" id="pZO-xf-mXj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BjR-Y0-O5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
