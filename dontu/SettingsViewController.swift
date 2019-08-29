@@ -73,8 +73,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             
             
             available_portname.text = element.uid
-            available_porttype.text = "Type: \(element.portType.rawValue)"
-            available_uid.text = "UID: \(element.uid)"
+            available_porttype.text = element.portType.rawValue
+            available_uid.text = element.uid
             
         }
                 

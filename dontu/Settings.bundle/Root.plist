@@ -18,14 +18,6 @@
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
-			<string>Port Type</string>
-			<key>Key</key>
-			<string>PortType</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSTextFieldSpecifier</string>
-			<key>Title</key>
 			<string>Port Name</string>
 			<key>Key</key>
 			<string>PortName</string>
