@@ -21,10 +21,15 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var distance: UISegmentedControl!
     @IBOutlet weak var other: UITextField!
     
+    @IBOutlet weak var use_button: RoundButton!
     
     @IBAction func useTouchUpInside(_ sender: Any) {
-        selected_portname.text = available_portname.text
-        selected_uid.text = available_uid.text
+        if(available_uid.text != ""){
+            selected_portname.text = available_portname.text
+            selected_uid.text = available_uid.text
+        }
+        
+        
     }
     
     
@@ -51,11 +56,16 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         
         let route  = avsession.currentRoute
         
-        print("route:::::: \(route.outputs.debugDescription) \n")
+        // @todo: delete me
+        // print("route:::::: \(route.outputs.debugDescription) \n")
         let out = route.outputs
         for element in out{
-            print("portname: \(element.portName)")
             
+            // @todo: delete me
+            // print("portname: \(element.portName)")
+            
+            // @todo: delete me
+            /*
             if element.portType == AVAudioSession.Port.bluetoothLE{
                 print("out BLE")
             }
@@ -67,14 +77,27 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             if element.portType == AVAudioSession.Port.bluetoothHFP{
                 print("out HFP")
             }
+            */
+            // print("rawValue: \(element.portType.rawValue) UID: \(element.uid) ")
             
-            print("rawValue: \(element.portType.rawValue) UID: \(element.uid) ")
+            if element.portType == AVAudioSession.Port.bluetoothLE || element.portType == AVAudioSession.Port.bluetoothA2DP || element.portType == AVAudioSession.Port.bluetoothHFP {
+                
+                // @todo: delete me
+                // d("è un bluetooth");
+                available_portname.text = element.portName
+                available_porttype.text = element.portType.rawValue
+                available_uid.text = element.uid
+                
+                use_button.isEnabled = true;
+            }else{
+                available_portname.text = "No Bluetooth Available"
+                available_porttype.text = ""
+                available_uid.text = ""
+                
+                use_button.isEnabled = false;
+            }
             
-            
-            
-            available_portname.text = element.uid
-            available_porttype.text = element.portType.rawValue
-            available_uid.text = element.uid
+
             
         }
                 
