@@ -48,7 +48,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         super.viewDidAppear(animated)
         
         
-        
+        // carica le possibili audio route connesse e filtra solo quelle Bluetooth
         let avsession = AVAudioSession.sharedInstance()
         
         try! avsession.setCategory(AVAudioSession.Category.playAndRecord, options: .allowBluetooth)
@@ -56,34 +56,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         
         let route  = avsession.currentRoute
         
-        // @todo: delete me
-        // print("route:::::: \(route.outputs.debugDescription) \n")
         let out = route.outputs
         for element in out{
-            
-            // @todo: delete me
-            // print("portname: \(element.portName)")
-            
-            // @todo: delete me
-            /*
-            if element.portType == AVAudioSession.Port.bluetoothLE{
-                print("out BLE")
-            }
-            
-            if element.portType == AVAudioSession.Port.bluetoothA2DP{
-                print("out A2DP")
-            }
-            
-            if element.portType == AVAudioSession.Port.bluetoothHFP{
-                print("out HFP")
-            }
-            */
-            // print("rawValue: \(element.portType.rawValue) UID: \(element.uid) ")
-            
             if element.portType == AVAudioSession.Port.bluetoothLE || element.portType == AVAudioSession.Port.bluetoothA2DP || element.portType == AVAudioSession.Port.bluetoothHFP {
                 
-                // @todo: delete me
-                // d("è un bluetooth");
                 available_portname.text = element.portName
                 available_porttype.text = element.portType.rawValue
                 available_uid.text = element.uid
@@ -96,9 +72,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
                 
                 use_button.isEnabled = false;
             }
-            
-
-            
         }
                 
         // load user default in settings form
@@ -108,6 +81,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         
         selected_portname.text = userDefaults.object(forKey: "PortName") as? String
         selected_uid.text = userDefaults.object(forKey: "UID") as? String
+        
+        
+        
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {

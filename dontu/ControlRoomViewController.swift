@@ -13,23 +13,70 @@ class ControlRoomViewController: UIViewController {
 
     private var isArmed: Bool = false;
     
-    @IBOutlet weak var petButton: RoundButton!
+    @IBOutlet weak var btnChild: RoundButton!
+    
+    @IBOutlet weak var btnPet: RoundButton!
+    
+    
+    @IBOutlet weak var btnOther: RoundButton!
+    
+    @IBOutlet weak var navBar: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // navBar.isTranslucent = true
+        // self.navigationItem.prompt = "nanna"
+        
+        
+        
+        
+        // Create a navView to add to the navigation bar
+        let navView = UIView()
+        
+        // Create the label
+        let label = UILabel()
+        label.text = "Text"
+        label.sizeToFit()
+        label.center = navView.center
+        label.textAlignment = NSTextAlignment.center
+        
+        // Create the image view
+        let image = UIImageView()
+        image.image = UIImage(named: "bluetooth")
+        
+        // To maintain the image's aspect ratio:
+        let imageAspect = image.image!.size.width/image.image!.size.height
+        // Setting the image frame so that it's immediately before the text:
+        image.frame = CGRect(x: label.frame.origin.x-label.frame.size.height*imageAspect, y: label.frame.origin.y, width: label.frame.size.height*imageAspect, height: label.frame.size.height)
+        image.contentMode = UIView.ContentMode.scaleAspectFit
+        
+        // Add both the label and image view to the navView
+        navView.addSubview(label)
+        navView.addSubview(image)
+        
+        // Set the navigation bar's navigation item's titleView to the navView
+        self.navBar.titleView = navView
+        // Set the navView's frame to fit within the titleView
+        navView.sizeToFit()
+        
+        
+        
+        
+        
+        
     }
     @IBAction func EnableChildControl(_ sender: UIButton) {
         d("nanna")
         changeState(sender)
     }
-    
+
     @IBAction func EnablePetControl(_ sender: UIButton) {
         changeState(sender)
         alert(message: "nanna bono")
     }
-    
+
     @IBAction func EnableOtherControl(_ sender: UIButton) {
         changeState(sender)
     }
@@ -67,11 +114,17 @@ class ControlRoomViewController: UIViewController {
         
         let userDefaults = UserDefaults.standard
         let uid = userDefaults.object(forKey: "UID") as? String
+        // load user default in settings form
+        let port_name = userDefaults.object(forKey: "UID") as? String
+        
+        
         
         
         
         if uid != nil && uid != ""{
             d( "UID----> \(String(describing: uid))" )
+            d( "PORT NAME----> \(String(describing: port_name))" )
+            
         }
         
         
@@ -85,14 +138,42 @@ class ControlRoomViewController: UIViewController {
         
         let out = route.outputs
         
+        
+        // disable all buttons
+        btnChild.isEnabled = false
+        btnPet.isEnabled = false
+        btnOther.isEnabled = false
+        
+        
         // enable / disable buttons according to bluetooth connection
+        // is the current audio connection a Bluetooth One ?
         for element in out{
             if element.portType == AVAudioSession.Port.bluetoothLE || element.portType == AVAudioSession.Port.bluetoothA2DP || element.portType == AVAudioSession.Port.bluetoothHFP {
                 
-                petButton.isEnabled = true
+                
+                // Is the current Bluetooth connection the one selected in preferences
+                if uid == element.uid {
+                    d("sono == ")
+                }else{
+                    
+                }
+                
+                
+                
+                
             }else{
-                petButton.isEnabled = false
+                btnPet.isEnabled = true
             }
+            
+            
+            
+            
+            // @delete me
+            d("CONNECTED PORT NAME \(element.portName)")
+            d("CONNECTED UID \(element.uid)")
+            
+            
+            
         }
     }
 
