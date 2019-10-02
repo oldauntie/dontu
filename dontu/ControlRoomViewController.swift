@@ -14,10 +14,7 @@ class ControlRoomViewController: UIViewController {
     private var isArmed: Bool = false;
     
     @IBOutlet weak var btnChild: RoundButton!
-    
     @IBOutlet weak var btnPet: RoundButton!
-    
-    
     @IBOutlet weak var btnOther: RoundButton!
     
     @IBOutlet weak var navBar: UINavigationItem!
@@ -28,9 +25,6 @@ class ControlRoomViewController: UIViewController {
         // Do any additional setup after loading the view.
         // navBar.isTranslucent = true
         // self.navigationItem.prompt = "nanna"
-        
-        
-        
         
         // Create a navView to add to the navigation bar
         let navView = UIView()
@@ -60,15 +54,9 @@ class ControlRoomViewController: UIViewController {
         self.navBar.titleView = navView
         // Set the navView's frame to fit within the titleView
         navView.sizeToFit()
-        
-        
-        
-        
-        
-        
     }
+    
     @IBAction func EnableChildControl(_ sender: UIButton) {
-        d("nanna")
         changeState(sender)
     }
 
@@ -92,9 +80,6 @@ class ControlRoomViewController: UIViewController {
     
     private func changeState(_ sender: UIButton)
     {
-        
-        
-        
         sender.isSelected = !sender.isSelected
         
         if(sender.isSelected == true)
@@ -109,72 +94,50 @@ class ControlRoomViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    private func checkBluetoothConnection() -> Bool {
+        // load user default in settings form
         let userDefaults = UserDefaults.standard
         let uid = userDefaults.object(forKey: "UID") as? String
-        // load user default in settings form
-        let port_name = userDefaults.object(forKey: "UID") as? String
+        // let port_name = userDefaults.object(forKey: "UID") as? String
         
-        
-        
-        
-        
+        // bluetooth is not configured
         if uid != nil && uid != ""{
-            d( "UID----> \(String(describing: uid))" )
-            d( "PORT NAME----> \(String(describing: port_name))" )
-            
+                return false
         }
         
-        
-        // read current audio route
+        // read current audio route into variable out
         let avsession = AVAudioSession.sharedInstance()
-        
         try! avsession.setCategory(AVAudioSession.Category.playAndRecord, options: .allowBluetooth)
         try! avsession.setActive(false)
-        
         let route  = avsession.currentRoute
-        
         let out = route.outputs
         
         
-        // disable all buttons
+        // if current audio connection if a Bluetooth One return true
+        for element in out{
+            if element.portType == AVAudioSession.Port.bluetoothLE || element.portType == AVAudioSession.Port.bluetoothA2DP || element.portType == AVAudioSession.Port.bluetoothHFP {
+                // Is the current Bluetooth connection the one selected in preferences
+                if uid == element.uid {
+                    return true
+                }
+            }
+        }
+        
+        return false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         btnChild.isEnabled = false
         btnPet.isEnabled = false
         btnOther.isEnabled = false
-        
-        
-        // enable / disable buttons according to bluetooth connection
-        // is the current audio connection a Bluetooth One ?
-        for element in out{
-            if element.portType == AVAudioSession.Port.bluetoothLE || element.portType == AVAudioSession.Port.bluetoothA2DP || element.portType == AVAudioSession.Port.bluetoothHFP {
-                
-                
-                // Is the current Bluetooth connection the one selected in preferences
-                if uid == element.uid {
-                    d("sono == ")
-                }else{
-                    
-                }
-                
-                
-                
-                
-            }else{
-                btnPet.isEnabled = true
-            }
-            
-            
-            
-            
-            // @delete me
-            d("CONNECTED PORT NAME \(element.portName)")
-            d("CONNECTED UID \(element.uid)")
-            
-            
-            
+        if checkBluetoothConnection() == true{
+            btnChild.isEnabled = true
+            btnPet.isEnabled = true
+            btnOther.isEnabled = true
         }
+        
     }
 
     /*
