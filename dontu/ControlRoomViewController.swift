@@ -21,10 +21,11 @@ class ControlRoomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupNotifications()
+        d("si parte")
 
         // Do any additional setup after loading the view.
-        // navBar.isTranslucent = true
-        // self.navigationItem.prompt = "nanna"
         
         // Create a navView to add to the navigation bar
         let navView = UIView()
@@ -101,7 +102,7 @@ class ControlRoomViewController: UIViewController {
         // let port_name = userDefaults.object(forKey: "UID") as? String
         
         // bluetooth is not configured
-        if uid != nil && uid != ""{
+        if uid == nil && uid == ""{
                 return false
         }
         
@@ -138,6 +139,83 @@ class ControlRoomViewController: UIViewController {
             btnOther.isEnabled = true
         }
         
+    }
+    
+    
+    func setupNotifications() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(handleRouteChange),
+                                       name: AVAudioSession.routeChangeNotification,
+                                       object: nil)
+    }
+    
+    
+    
+    /*
+    @objc func handleInterruption(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+            let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
+                return
+        }
+        if type == .began {
+            // Interruption began, take appropriate actions
+            d("Interruption began, take appropriate actions")
+        }
+        else if type == .ended {
+            if let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt {
+                let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
+                if options.contains(.shouldResume) {
+                    // Interruption Ended - playback should resume
+                    d("// Interruption Ended - playback should resume")
+                } else {
+                    // Interruption Ended - playback should NOT resume
+                    d("// Interruption Ended - playback should NOT resume")
+                }
+            }
+        }
+    }
+    */
+    
+    
+    @objc func handleRouteChange(_ notification: Notification) {
+        let reasonValue = (notification as NSNotification).userInfo![AVAudioSessionRouteChangeReasonKey] as! UInt
+        let routeDescription = (notification as NSNotification).userInfo![AVAudioSessionRouteChangePreviousRouteKey] as! AVAudioSessionRouteDescription?
+
+        NSLog("Route change:")
+        if let reason = AVAudioSession.RouteChangeReason(rawValue: reasonValue) {
+            switch reason {
+            case .newDeviceAvailable:
+                NSLog("     NewDeviceAvailable")
+            case .oldDeviceUnavailable:
+                NSLog("     OldDeviceUnavailable")
+            case .categoryChange:
+                NSLog("     CategoryChange")
+                NSLog(" New Category: %@", AVAudioSession.sharedInstance().category.rawValue)
+            case .override:
+                NSLog("     Override")
+            case .wakeFromSleep:
+                NSLog("     WakeFromSleep")
+            case .noSuitableRouteForCategory:
+                NSLog("     NoSuitableRouteForCategory")
+            case .routeConfigurationChange:
+                NSLog("     RouteConfigurationChange")
+            case .unknown:
+                NSLog("     Unknown")
+            @unknown default:
+                NSLog("     UnknownDefault(%zu)", reasonValue)
+            }
+        } else {
+            NSLog("     ReasonUnknown(%zu)", reasonValue)
+        }
+
+        if let prevRout = routeDescription {
+            NSLog("Previous route:\n")
+            NSLog("%@", prevRout)
+            NSLog("Current route:\n")
+            NSLog("%@\n", AVAudioSession.sharedInstance().currentRoute)
+        }
     }
 
     /*
