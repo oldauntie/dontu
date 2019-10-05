@@ -8,27 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		BF06006022FD5A4900C669F4 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF06005F22FD5A4900C669F4 /* Utility.swift */; };
+		BF2E0AAC2346841100DE7EB1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2E0AAB2346841100DE7EB1 /* AudioToolbox.framework */; };
 		BF462CB422FB561900FF37CC /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF462CB322FB561900FF37CC /* RoundButton.swift */; };
 		BF4A5DE622FB3E3800A0A646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A5DE522FB3E3800A0A646 /* AppDelegate.swift */; };
 		BF4A5DEB22FB3E3800A0A646 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4A5DE922FB3E3800A0A646 /* Main.storyboard */; };
 		BF4A5DED22FB3E3A00A0A646 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4A5DEC22FB3E3A00A0A646 /* Assets.xcassets */; };
 		BF4A5DF022FB3E3A00A0A646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4A5DEE22FB3E3A00A0A646 /* LaunchScreen.storyboard */; };
-		BF4C6297230AEA1E004408E3 /* ControlRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C6296230AEA1E004408E3 /* ControlRoomViewController.swift */; };
+		BF4C6297230AEA1E004408E3 /* MainDontUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C6296230AEA1E004408E3 /* MainDontUViewController.swift */; };
 		BF4C629B230AF508004408E3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BF4C629A230AF508004408E3 /* Settings.bundle */; };
+		BF6001C2234602040029A4DD /* tickle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF6001C0234602040029A4DD /* tickle.mp3 */; };
+		BF6001C3234602040029A4DD /* bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF6001C1234602040029A4DD /* bell.mp3 */; };
 		BFDBCDB82314202400521017 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDBCDB72314202400521017 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BF06005F22FD5A4900C669F4 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utility.swift; path = ../Utility.swift; sourceTree = "<group>"; };
+		BF2E0AA92346841100DE7EB1 /* DontU.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DontU.entitlements; sourceTree = "<group>"; };
+		BF2E0AAB2346841100DE7EB1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BF462CB322FB561900FF37CC /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
-		BF4A5DE222FB3E3800A0A646 /* dontu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dontu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF4A5DE222FB3E3800A0A646 /* DontU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DontU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4A5DE522FB3E3800A0A646 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF4A5DEA22FB3E3800A0A646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF4A5DEC22FB3E3A00A0A646 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF4A5DEF22FB3E3A00A0A646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF4A5DF122FB3E3A00A0A646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF4C6296230AEA1E004408E3 /* ControlRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlRoomViewController.swift; sourceTree = "<group>"; };
+		BF4C6296230AEA1E004408E3 /* MainDontUViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDontUViewController.swift; sourceTree = "<group>"; };
 		BF4C629A230AF508004408E3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		BF6001C0234602040029A4DD /* tickle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tickle.mp3; sourceTree = "<group>"; };
+		BF6001C1234602040029A4DD /* bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bell.mp3; sourceTree = "<group>"; };
 		BFDBCDB72314202400521017 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -37,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF2E0AAC2346841100DE7EB1 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,45 +59,97 @@
 			path = Oldauntie;
 			sourceTree = "<group>";
 		};
+		BF0C21042345FC6800453408 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BF4A5DE922FB3E3800A0A646 /* Main.storyboard */,
+				BF4A5DEE22FB3E3A00A0A646 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BF0C21052345FCFB00453408 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BF4A5DE522FB3E3800A0A646 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BF2E0AAA2346841100DE7EB1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF2E0AAB2346841100DE7EB1 /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BF4A5DD922FB3E3800A0A646 = {
 			isa = PBXGroup;
 			children = (
-				BF4A5DE422FB3E3800A0A646 /* dontu */,
+				BF4A5DE422FB3E3800A0A646 /* DontU */,
 				BF4A5DE322FB3E3800A0A646 /* Products */,
+				BF2E0AAA2346841100DE7EB1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		BF4A5DE322FB3E3800A0A646 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BF4A5DE222FB3E3800A0A646 /* dontu.app */,
+				BF4A5DE222FB3E3800A0A646 /* DontU.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BF4A5DE422FB3E3800A0A646 /* dontu */ = {
+		BF4A5DE422FB3E3800A0A646 /* DontU */ = {
 			isa = PBXGroup;
 			children = (
-				BF4C629A230AF508004408E3 /* Settings.bundle */,
+				BF2E0AA92346841100DE7EB1 /* DontU.entitlements */,
+				BF6001BF2346005D0029A4DD /* Resources */,
+				BF6001BE2345FFF80029A4DD /* Model */,
+				BF6001BD2345FEBA0029A4DD /* Controller */,
+				BF0C21052345FCFB00453408 /* App */,
+				BF0C21042345FC6800453408 /* Views */,
 				BF06006122FD9A7F00C669F4 /* Oldauntie */,
-				BF4A5DE522FB3E3800A0A646 /* AppDelegate.swift */,
-				BF4A5DE922FB3E3800A0A646 /* Main.storyboard */,
-				BF4C6296230AEA1E004408E3 /* ControlRoomViewController.swift */,
-				BF4A5DEC22FB3E3A00A0A646 /* Assets.xcassets */,
-				BF4A5DEE22FB3E3A00A0A646 /* LaunchScreen.storyboard */,
-				BF4A5DF122FB3E3A00A0A646 /* Info.plist */,
+			);
+			path = DontU;
+			sourceTree = "<group>";
+		};
+		BF6001BD2345FEBA0029A4DD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 				BF462CB322FB561900FF37CC /* RoundButton.swift */,
+				BF4C6296230AEA1E004408E3 /* MainDontUViewController.swift */,
 				BFDBCDB72314202400521017 /* SettingsViewController.swift */,
 			);
-			path = dontu;
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BF6001BE2345FFF80029A4DD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BF6001BF2346005D0029A4DD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BF6001C1234602040029A4DD /* bell.mp3 */,
+				BF6001C0234602040029A4DD /* tickle.mp3 */,
+				BF4A5DEC22FB3E3A00A0A646 /* Assets.xcassets */,
+				BF4C629A230AF508004408E3 /* Settings.bundle */,
+				BF4A5DF122FB3E3A00A0A646 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BF4A5DE122FB3E3800A0A646 /* dontu */ = {
+		BF4A5DE122FB3E3800A0A646 /* DontU */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF4A5DF422FB3E3A00A0A646 /* Build configuration list for PBXNativeTarget "dontu" */;
+			buildConfigurationList = BF4A5DF422FB3E3A00A0A646 /* Build configuration list for PBXNativeTarget "DontU" */;
 			buildPhases = (
 				BF4A5DDE22FB3E3800A0A646 /* Sources */,
 				BF4A5DDF22FB3E3800A0A646 /* Frameworks */,
@@ -99,9 +159,9 @@
 			);
 			dependencies = (
 			);
-			name = dontu;
+			name = DontU;
 			productName = dontu;
-			productReference = BF4A5DE222FB3E3800A0A646 /* dontu.app */;
+			productReference = BF4A5DE222FB3E3800A0A646 /* DontU.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -119,7 +179,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BF4A5DDD22FB3E3800A0A646 /* Build configuration list for PBXProject "dontu" */;
+			buildConfigurationList = BF4A5DDD22FB3E3800A0A646 /* Build configuration list for PBXProject "DontU" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -132,7 +192,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BF4A5DE122FB3E3800A0A646 /* dontu */,
+				BF4A5DE122FB3E3800A0A646 /* DontU */,
 			);
 		};
 /* End PBXProject section */
@@ -146,6 +206,8 @@
 				BF4A5DF022FB3E3A00A0A646 /* LaunchScreen.storyboard in Resources */,
 				BF4A5DED22FB3E3A00A0A646 /* Assets.xcassets in Resources */,
 				BF4A5DEB22FB3E3800A0A646 /* Main.storyboard in Resources */,
+				BF6001C2234602040029A4DD /* tickle.mp3 in Resources */,
+				BF6001C3234602040029A4DD /* bell.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,7 +220,7 @@
 			files = (
 				BFDBCDB82314202400521017 /* SettingsViewController.swift in Sources */,
 				BF462CB422FB561900FF37CC /* RoundButton.swift in Sources */,
-				BF4C6297230AEA1E004408E3 /* ControlRoomViewController.swift in Sources */,
+				BF4C6297230AEA1E004408E3 /* MainDontUViewController.swift in Sources */,
 				BF4A5DE622FB3E3800A0A646 /* AppDelegate.swift in Sources */,
 				BF06006022FD5A4900C669F4 /* Utility.swift in Sources */,
 			);
@@ -306,9 +368,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DontU/DontU.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FYB23VMPY;
-				INFOPLIST_FILE = dontu/Info.plist;
+				INFOPLIST_FILE = DontU/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -325,9 +388,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DontU/DontU.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FYB23VMPY;
-				INFOPLIST_FILE = dontu/Info.plist;
+				INFOPLIST_FILE = DontU/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -343,7 +407,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BF4A5DDD22FB3E3800A0A646 /* Build configuration list for PBXProject "dontu" */ = {
+		BF4A5DDD22FB3E3800A0A646 /* Build configuration list for PBXProject "DontU" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF4A5DF222FB3E3A00A0A646 /* Debug */,
@@ -352,7 +416,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF4A5DF422FB3E3A00A0A646 /* Build configuration list for PBXNativeTarget "dontu" */ = {
+		BF4A5DF422FB3E3A00A0A646 /* Build configuration list for PBXNativeTarget "DontU" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF4A5DF522FB3E3A00A0A646 /* Debug */,

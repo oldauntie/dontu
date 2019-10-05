@@ -109,7 +109,7 @@ class ControlRoomViewController: UIViewController {
         // read current audio route into variable out
         let avsession = AVAudioSession.sharedInstance()
         try! avsession.setCategory(AVAudioSession.Category.playAndRecord, options: .allowBluetooth)
-        try! avsession.setActive(false)
+        try! avsession.setActive(true)
         let route  = avsession.currentRoute
         let out = route.outputs
         
@@ -143,11 +143,15 @@ class ControlRoomViewController: UIViewController {
     
     
     func setupNotifications() {
+        // Configure the audio session
+        let sessionInstance = AVAudioSession.sharedInstance()
+        try! sessionInstance.setCategory(AVAudioSession.Category.playAndRecord, options: .allowBluetooth)
+        try! sessionInstance.setActive(true)
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self,
                                        selector: #selector(handleRouteChange),
                                        name: AVAudioSession.routeChangeNotification,
-                                       object: nil)
+                                       object: sessionInstance)
     }
     
     
