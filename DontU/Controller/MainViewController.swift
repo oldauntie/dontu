@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ControlRoomViewController: UIViewController {
+class MainViewController: UIViewController {
 
     private var isArmed: Bool = false;
     
@@ -19,12 +19,15 @@ class ControlRoomViewController: UIViewController {
     
     @IBOutlet weak var navBar: UINavigationItem!
     
+    @IBOutlet weak var debug: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNotifications()
         d("si parte")
-
+        
+        /*
         // Do any additional setup after loading the view.
         
         // Create a navView to add to the navigation bar
@@ -55,6 +58,28 @@ class ControlRoomViewController: UIViewController {
         self.navBar.titleView = navView
         // Set the navView's frame to fit within the titleView
         navView.sizeToFit()
+        */
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        /*
+        btnChild.isEnabled = false
+        btnPet.isEnabled = false
+        btnOther.isEnabled = false
+        if checkBluetoothConnection() == true{
+            btnChild.isEnabled = true
+            btnPet.isEnabled = true
+            btnOther.isEnabled = true
+        }
+        */
+        
+        
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
     
     @IBAction func EnableChildControl(_ sender: UIButton) {
@@ -63,7 +88,7 @@ class ControlRoomViewController: UIViewController {
 
     @IBAction func EnablePetControl(_ sender: UIButton) {
         changeState(sender)
-        alert(message: "nanna bono")
+        alert(message: "timer fermo")
     }
 
     @IBAction func EnableOtherControl(_ sender: UIButton) {
@@ -127,26 +152,16 @@ class ControlRoomViewController: UIViewController {
         return false
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        btnChild.isEnabled = false
-        btnPet.isEnabled = false
-        btnOther.isEnabled = false
-        if checkBluetoothConnection() == true{
-            btnChild.isEnabled = true
-            btnPet.isEnabled = true
-            btnOther.isEnabled = true
-        }
-        
-    }
     
     
     func setupNotifications() {
+        
+        d("setupNotifications")
+        
         // Configure the audio session
         let sessionInstance = AVAudioSession.sharedInstance()
         try! sessionInstance.setCategory(AVAudioSession.Category.playAndRecord, options: .allowBluetooth)
-        try! sessionInstance.setActive(true)
+        try! sessionInstance.setActive(false)
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self,
                                        selector: #selector(handleRouteChange),
@@ -187,7 +202,7 @@ class ControlRoomViewController: UIViewController {
         let reasonValue = (notification as NSNotification).userInfo![AVAudioSessionRouteChangeReasonKey] as! UInt
         let routeDescription = (notification as NSNotification).userInfo![AVAudioSessionRouteChangePreviousRouteKey] as! AVAudioSessionRouteDescription?
 
-        NSLog("Route change:")
+        NSLog("Route change:...")
         if let reason = AVAudioSession.RouteChangeReason(rawValue: reasonValue) {
             switch reason {
             case .newDeviceAvailable:

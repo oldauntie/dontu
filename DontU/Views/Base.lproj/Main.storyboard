@@ -11,7 +11,7 @@
         <!--Settings View Controller-->
         <scene sceneID="SZL-r4-ZKM">
             <objects>
-                <viewController id="zHX-ri-jb1" customClass="SettingsViewController" customModule="dontu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zHX-ri-jb1" customClass="SettingsViewController" customModule="DontU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vPQ-Z8-Xx3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,7 +33,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUM-1m-XIl" customClass="RoundButton" customModule="dontu" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUM-1m-XIl" customClass="RoundButton" customModule="DontU" customModuleProvider="target">
                                                 <rect key="frame" x="181.5" y="0.0" width="68" height="30"/>
                                                 <color key="backgroundColor" red="1" green="0.55270987670000005" blue="0.002888324389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -169,10 +169,10 @@
             </objects>
             <point key="canvasLocation" x="741.60000000000002" y="539.28035982008998"/>
         </scene>
-        <!--ControlRoom-->
+        <!--Main-->
         <scene sceneID="23Z-1t-4RW">
             <objects>
-                <viewController title="Bluetooth" id="7Xa-rp-jJw" userLabel="ControlRoom" customClass="ControlRoomViewController" customModule="dontu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Bluetooth" id="7Xa-rp-jJw" userLabel="Main" customClass="MainViewController" customModule="DontU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Psk-ht-m8n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,7 +180,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="reI-Do-QS9" userLabel="Stack View Main">
                                 <rect key="frame" x="102.5" y="70.5" width="170" height="526"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMt-xe-JuM" userLabel="Child Button" customClass="RoundButton" customModule="dontu" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMt-xe-JuM" userLabel="Child Button" customClass="RoundButton" customModule="DontU" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -200,7 +200,7 @@
                                             <action selector="EnableChildControl:" destination="7Xa-rp-jJw" eventType="touchUpInside" id="UCJ-c7-yea"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxr-Re-JEL" userLabel="Pet Button" customClass="RoundButton" customModule="dontu" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxr-Re-JEL" userLabel="Pet Button" customClass="RoundButton" customModule="DontU" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="178" width="170" height="170"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -220,7 +220,7 @@
                                             <action selector="EnablePetControl:" destination="7Xa-rp-jJw" eventType="touchUpInside" id="UBD-L0-cMe"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxF-wU-Gj4" userLabel="Other Button" customClass="RoundButton" customModule="dontu" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxF-wU-Gj4" userLabel="Other Button" customClass="RoundButton" customModule="DontU" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="356" width="170" height="170"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -269,7 +269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="My1-fj-VYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="775" y="-376"/>
+            <point key="canvasLocation" x="773.60000000000002" y="-376.46176911544228"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="a87-rH-N9x">
@@ -283,11 +283,62 @@
                     <connections>
                         <segue destination="7Xa-rp-jJw" kind="relationship" relationship="viewControllers" id="LIp-MC-WsD"/>
                         <segue destination="zHX-ri-jb1" kind="relationship" relationship="viewControllers" id="4c6-x9-biM"/>
+                        <segue destination="13P-eI-OBB" kind="relationship" relationship="viewControllers" id="fU0-3G-DoL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X3w-Og-SNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-618" y="98"/>
+        </scene>
+        <!--Debug-->
+        <scene sceneID="8Jo-92-2Qb">
+            <objects>
+                <viewController id="13P-eI-OBB" userLabel="Debug" customClass="DebugViewController" customModule="DontU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z4W-5T-y0t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Debug" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lfu-pU-YXK">
+                                <rect key="frame" x="16" y="441" width="343" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Not Updated" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ve-dL-tEy">
+                                <rect key="frame" x="43" y="251" width="293" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Update Route" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOQ-Qx-bdw">
+                                <rect key="frame" x="71" y="48" width="265" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZl-bJ-2u7">
+                                <rect key="frame" x="71" y="77" width="51" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="didUpdateRoute:" destination="13P-eI-OBB" eventType="touchUpInside" id="UQQ-PC-NHw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="IX2-Go-EZK"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="child_friendly" id="Heo-vK-d7w"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="timeLabel" destination="1ve-dL-tEy" id="lll-HT-Qag"/>
+                        <outlet property="updateRoute" destination="hOQ-Qx-bdw" id="FC0-jP-iyH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8hu-RT-mEL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1744.8" y="97.601199400299862"/>
         </scene>
     </scenes>
     <resources>

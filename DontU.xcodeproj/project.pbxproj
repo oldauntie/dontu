@@ -8,21 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		BF06006022FD5A4900C669F4 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF06005F22FD5A4900C669F4 /* Utility.swift */; };
+		BF2DB20B2349B43D008EA571 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DB20A2349B43D008EA571 /* Bluetooth.swift */; };
+		BF2DB20D2349B473008EA571 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DB20C2349B473008EA571 /* Route.swift */; };
 		BF2E0AAC2346841100DE7EB1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2E0AAB2346841100DE7EB1 /* AudioToolbox.framework */; };
 		BF462CB422FB561900FF37CC /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF462CB322FB561900FF37CC /* RoundButton.swift */; };
 		BF4A5DE622FB3E3800A0A646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A5DE522FB3E3800A0A646 /* AppDelegate.swift */; };
 		BF4A5DEB22FB3E3800A0A646 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4A5DE922FB3E3800A0A646 /* Main.storyboard */; };
 		BF4A5DED22FB3E3A00A0A646 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4A5DEC22FB3E3A00A0A646 /* Assets.xcassets */; };
 		BF4A5DF022FB3E3A00A0A646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4A5DEE22FB3E3A00A0A646 /* LaunchScreen.storyboard */; };
-		BF4C6297230AEA1E004408E3 /* MainDontUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C6296230AEA1E004408E3 /* MainDontUViewController.swift */; };
+		BF4C6297230AEA1E004408E3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C6296230AEA1E004408E3 /* MainViewController.swift */; };
 		BF4C629B230AF508004408E3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BF4C629A230AF508004408E3 /* Settings.bundle */; };
 		BF6001C2234602040029A4DD /* tickle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF6001C0234602040029A4DD /* tickle.mp3 */; };
 		BF6001C3234602040029A4DD /* bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF6001C1234602040029A4DD /* bell.mp3 */; };
+		BFA19439234886D6003D0CCF /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA19438234886D6003D0CCF /* DebugViewController.swift */; };
 		BFDBCDB82314202400521017 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDBCDB72314202400521017 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BF06005F22FD5A4900C669F4 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utility.swift; path = ../Utility.swift; sourceTree = "<group>"; };
+		BF2DB20A2349B43D008EA571 /* Bluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bluetooth.swift; sourceTree = "<group>"; };
+		BF2DB20C2349B473008EA571 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		BF2E0AA92346841100DE7EB1 /* DontU.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DontU.entitlements; sourceTree = "<group>"; };
 		BF2E0AAB2346841100DE7EB1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BF462CB322FB561900FF37CC /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
@@ -32,10 +37,11 @@
 		BF4A5DEC22FB3E3A00A0A646 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF4A5DEF22FB3E3A00A0A646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF4A5DF122FB3E3A00A0A646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF4C6296230AEA1E004408E3 /* MainDontUViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDontUViewController.swift; sourceTree = "<group>"; };
+		BF4C6296230AEA1E004408E3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BF4C629A230AF508004408E3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		BF6001C0234602040029A4DD /* tickle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tickle.mp3; sourceTree = "<group>"; };
 		BF6001C1234602040029A4DD /* bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bell.mp3; sourceTree = "<group>"; };
+		BFA19438234886D6003D0CCF /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		BFDBCDB72314202400521017 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,8 +125,9 @@
 			isa = PBXGroup;
 			children = (
 				BF462CB322FB561900FF37CC /* RoundButton.swift */,
-				BF4C6296230AEA1E004408E3 /* MainDontUViewController.swift */,
+				BF4C6296230AEA1E004408E3 /* MainViewController.swift */,
 				BFDBCDB72314202400521017 /* SettingsViewController.swift */,
+				BFA19438234886D6003D0CCF /* DebugViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -128,6 +135,8 @@
 		BF6001BE2345FFF80029A4DD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BF2DB20A2349B43D008EA571 /* Bluetooth.swift */,
+				BF2DB20C2349B473008EA571 /* Route.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -218,11 +227,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFA19439234886D6003D0CCF /* DebugViewController.swift in Sources */,
 				BFDBCDB82314202400521017 /* SettingsViewController.swift in Sources */,
 				BF462CB422FB561900FF37CC /* RoundButton.swift in Sources */,
-				BF4C6297230AEA1E004408E3 /* MainDontUViewController.swift in Sources */,
+				BF4C6297230AEA1E004408E3 /* MainViewController.swift in Sources */,
 				BF4A5DE622FB3E3800A0A646 /* AppDelegate.swift in Sources */,
+				BF2DB20D2349B473008EA571 /* Route.swift in Sources */,
 				BF06006022FD5A4900C669F4 /* Utility.swift in Sources */,
+				BF2DB20B2349B43D008EA571 /* Bluetooth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

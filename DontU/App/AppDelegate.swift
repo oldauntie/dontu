@@ -16,7 +16,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
         return true
+    }
+    
+    
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if let tabBarController = window?.rootViewController as? UITabBarController,
+            let viewControllers = tabBarController.viewControllers
+            {
+                for viewController in viewControllers {
+                    if let fetchViewController = viewController as? DebugViewController {
+                        /*
+                        fetchViewController.fetch {
+                          fetchViewController.updateUI()
+                          completionHandler(.newData)
+                        }
+                        */
+                        fetchViewController.updateUI()
+                        completionHandler(.newData)
+                    }
+                }
+            }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -27,6 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        // d(UIApplication.backgroundFetchIntervalMinimum)
+        // d(application.backgroundTimeRemaining)
+        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -40,7 +65,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    /*
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if let viewController = window?.rootViewController as? DebugViewController {
+        viewController.updateTime()
+      }
+        
+        
+    }
+    */
+    
 
+    
 
 }
 

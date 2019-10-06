@@ -1,6 +1,6 @@
 //
 //  SettingsViewController.swift
-//  dontu
+//  DontU
 //
 //  Created by nanna on 19/08/2019.
 //  Copyright © 2019 OldAuntie. All rights reserved.
