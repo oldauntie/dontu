@@ -265,7 +265,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nyf-f7-EJG"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="face" landscapeImage="face" id="4oe-dw-ez1">
+                    <tabBarItem key="tabBarItem" title="" image="child_friendly" landscapeImage="child_friendly" id="4oe-dw-ez1">
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="0.0"/>
                     </tabBarItem>
                     <connections>
@@ -273,7 +273,6 @@
                         <outlet property="btnOther" destination="mxF-wU-Gj4" id="f0l-Ak-WNz"/>
                         <outlet property="btnPet" destination="cxr-Re-JEL" id="2E8-kH-FxE"/>
                         <outlet property="debugText" destination="VzZ-dp-gB7" id="U7m-kM-Vgn"/>
-                        <outlet property="navBar" destination="8bl-Yj-B3D" id="OaJ-1o-NIf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="My1-fj-VYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -292,70 +291,15 @@
                     <connections>
                         <segue destination="7Xa-rp-jJw" kind="relationship" relationship="viewControllers" id="LIp-MC-WsD"/>
                         <segue destination="zHX-ri-jb1" kind="relationship" relationship="viewControllers" id="4c6-x9-biM"/>
-                        <segue destination="13P-eI-OBB" kind="relationship" relationship="viewControllers" id="fU0-3G-DoL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X3w-Og-SNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-618" y="98"/>
         </scene>
-        <!--Debug-->
-        <scene sceneID="8Jo-92-2Qb">
-            <objects>
-                <viewController id="13P-eI-OBB" userLabel="Debug" customClass="DebugViewController" customModule="DontU" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Z4W-5T-y0t">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Not Updated" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ve-dL-tEy">
-                                <rect key="frame" x="43" y="251" width="293" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Update Route" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOQ-Qx-bdw">
-                                <rect key="frame" x="71" y="48" width="265" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZl-bJ-2u7">
-                                <rect key="frame" x="71" y="77" width="51" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Update"/>
-                                <connections>
-                                    <action selector="didUpdateRoute:" destination="13P-eI-OBB" eventType="touchUpInside" id="UQQ-PC-NHw"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="prn-xo-w4N">
-                                <rect key="frame" x="16" y="339" width="343" height="259"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="IX2-Go-EZK"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="child_friendly" id="Heo-vK-d7w"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="debugText" destination="prn-xo-w4N" id="e9x-Nq-40j"/>
-                        <outlet property="timeLabel" destination="1ve-dL-tEy" id="lll-HT-Qag"/>
-                        <outlet property="updateRoute" destination="hOQ-Qx-bdw" id="FC0-jP-iyH"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8hu-RT-mEL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1744.8" y="97.601199400299862"/>
-        </scene>
     </scenes>
     <resources>
         <image name="child_friendly" width="48" height="48"/>
-        <image name="face" width="48" height="48"/>
         <image name="loyalty" width="48" height="48"/>
         <image name="pets" width="48" height="48"/>
         <image name="settings" width="48" height="48"/>

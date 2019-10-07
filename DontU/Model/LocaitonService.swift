@@ -51,12 +51,15 @@ class LocationService: NSObject, CLLocationManagerDelegate{
             locationManager.stopUpdatingLocation()
         }else{
             // show an error
+            d("ERRORE")
         }
     }
     
+    // @todo delete me TBE
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         if let newLocation = locations.last{
-            // print("(\(newLocation.coordinate.latitude), \(newLocation.coordinate.latitude))")
+            print("loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.latitude))")
         }
     }
 }

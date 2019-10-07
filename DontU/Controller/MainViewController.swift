@@ -14,7 +14,7 @@ import UserNotifications
 class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
     @IBOutlet weak var debugText: UITextView!
     
-    private var isArmed: Bool = false;
+    // private var isArmed: Bool = false;
     private var numberOfArmedDevices = 0
     private var location: LocationService?
     private var currentAudioRouteUid: String?
@@ -24,7 +24,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     @IBOutlet weak var btnPet: RoundButton!
     @IBOutlet weak var btnOther: RoundButton!
     
-    @IBOutlet weak var navBar: UINavigationItem!
     
     @IBOutlet weak var debug: UITextField!
     
@@ -33,6 +32,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         
         location = LocationService.sharedInstance
         location?.locationManager.delegate = self
+        
+        // read current audio route
+        currentAudioRouteUid = Route.getUid()
         
         // used to setup the alarm
         scheduler = Scheduler()
@@ -45,48 +47,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
                                        object: nil)
     }
     
-    /*
-    func scheduleNotification() {
-        let center = UNUserNotificationCenter.current()
 
-        let content = UNMutableNotificationContent()
-        content.title = "ContU"
-        content.body = "Forget about me..."
-        content.categoryIdentifier = "alarm"
-        content.userInfo = ["customData": "fizzbuzz"]
-        // content.sound = UNNotificationSound.default
-        
-        let soundName = UNNotificationSoundName("bell.mp3")
-        content.sound = UNNotificationSound(named: soundName)
-
-        var dateComponents = DateComponents()
-        dateComponents.hour = 10
-        dateComponents.minute = 30
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        center.add(request)
-    }
-    
-    
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .badge, .sound])
-    }
-    */
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        if let newLocation = locations.last{
-            debugText.text += "loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.latitude)) +\n"
-            
-            if currentAudioRouteUid != nil && currentAudioRouteUid != Route.getUid(){
-                // set the alarm
-                scheduler?.scheduleNotification()
-                // reset current route UID
-                currentAudioRouteUid = Route.getUid()
-            }
-        }
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -95,9 +56,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     }
     
     func updateUI() -> Void{
-        // read current audio route
-        currentAudioRouteUid = Route.getUid()
-        
+        /*
         btnChild.isEnabled = false
         btnPet.isEnabled = false
         btnOther.isEnabled = false
@@ -106,6 +65,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             btnPet.isEnabled = true
             btnOther.isEnabled = true
         }
+        */
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -135,12 +95,25 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     
     private func changeState(_ sender: UIButton)
     {
+        // load user default in settings form
+        let userDefaults = UserDefaults.standard
+        let uid = userDefaults.object(forKey: "UID") as? String
+        
+        if uid == nil || uid == ""{
+            alert(message: "No Bluetooh connection configued yet. Select one in settings", title: "Warning")
+            return
+        }
+
+        if checkBluetoothConnection() == false{
+            alert(message: "Phone is not connected to Car Audio Bluetooh. Connect the phone or select another one in settings", title: "Warning")
+            return
+        }
+        
         // manage button state and arm the app
         sender.isSelected = !sender.isSelected
         
         if(sender.isSelected == true)
         {
-            // sender.setImage(UIImage(named:"pets"), for: UIControl.State.normal);
             sender.backgroundColor = UIColor.orange
             numberOfArmedDevices += 1
         }
@@ -151,13 +124,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             numberOfArmedDevices -= 1
         }
         
-        
+        // start GPS
         if numberOfArmedDevices > 0 {
             // device is armed: start GPS localization
+            d("start GPS")
             location?.startUpdatingLocation()
             
         }else{
             // device is disarmed: stop GPS localization
+            d("stop GPS")
             location?.stopUpdatingLocation()
         }
         
@@ -168,12 +143,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         // load user default in settings form
         let userDefaults = UserDefaults.standard
         let uid = userDefaults.object(forKey: "UID") as? String
-        // let port_name = userDefaults.object(forKey: "UID") as? String
-        
-        // bluetooth is not configured
-        if uid == nil && uid == ""{
-                return false
-        }
         
         if Route.isBluetooth(){
             if Route.getUid() == uid{
@@ -186,76 +155,27 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     }
 
     
-    /*
-    @objc func handleInterruption(notification: Notification) {
-        guard let userInfo = notification.userInfo,
-            let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
-            let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
-                return
-        }
-        if type == .began {
-            // Interruption began, take appropriate actions
-            d("Interruption began, take appropriate actions")
-        }
-        else if type == .ended {
-            if let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt {
-                let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
-                if options.contains(.shouldResume) {
-                    // Interruption Ended - playback should resume
-                    d("// Interruption Ended - playback should resume")
-                } else {
-                    // Interruption Ended - playback should NOT resume
-                    d("// Interruption Ended - playback should NOT resume")
-                }
-            }
-        }
-    }
-    */
     
     @objc func handleRouteChange(_ notification: Notification) {
         DispatchQueue.main.async {
             self.updateUI()
         }
-        
-        /*
-        let reasonValue = (notification as NSNotification).userInfo![AVAudioSessionRouteChangeReasonKey] as! UInt
-        let routeDescription = (notification as NSNotification).userInfo![AVAudioSessionRouteChangePreviousRouteKey] as! AVAudioSessionRouteDescription?
-
-        NSLog("Route change:...")
-        if let reason = AVAudioSession.RouteChangeReason(rawValue: reasonValue) {
-            switch reason {
-            case .newDeviceAvailable:
-                NSLog("     NewDeviceAvailable")
-            case .oldDeviceUnavailable:
-                NSLog("     OldDeviceUnavailable")
-            case .categoryChange:
-                NSLog("     CategoryChange")
-                NSLog(" New Category: %@", AVAudioSession.sharedInstance().category.rawValue)
-            case .override:
-                NSLog("     Override")
-            case .wakeFromSleep:
-                NSLog("     WakeFromSleep")
-            case .noSuitableRouteForCategory:
-                NSLog("     NoSuitableRouteForCategory")
-            case .routeConfigurationChange:
-                NSLog("     RouteConfigurationChange")
-            case .unknown:
-                NSLog("     Unknown")
-            @unknown default:
-                NSLog("     UnknownDefault(%zu)", reasonValue)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        if let newLocation = locations.last{
+            debugText.text += "loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)) +\n"
+            
+            d("current: \(String(describing: currentAudioRouteUid)) Route.getUid(): \(String(describing: Route.getUid()))")
+            
+            
+            if currentAudioRouteUid != nil && currentAudioRouteUid != Route.getUid(){
+                // set the alarm
+                scheduler?.scheduleNotification()
+                // reset current route UID
+                currentAudioRouteUid = Route.getUid()
             }
-        } else {
-            NSLog("     ReasonUnknown(%zu)", reasonValue)
         }
-
-        
-        if let prevRout = routeDescription {
-            NSLog("Previous route:\n")
-            NSLog("%@", prevRout)
-            NSLog("Current route:\n")
-            NSLog("%@\n", AVAudioSession.sharedInstance().currentRoute)
-        }
- */
     }
 
     /*

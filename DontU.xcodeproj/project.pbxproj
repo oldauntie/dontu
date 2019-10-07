@@ -21,7 +21,6 @@
 		BF6001C2234602040029A4DD /* tickle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF6001C0234602040029A4DD /* tickle.mp3 */; };
 		BF6001C3234602040029A4DD /* bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF6001C1234602040029A4DD /* bell.mp3 */; };
 		BF9DD650234B898600D5C63C /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9DD64F234B898600D5C63C /* Scheduler.swift */; };
-		BFA19439234886D6003D0CCF /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA19438234886D6003D0CCF /* DebugViewController.swift */; };
 		BFDBCDB82314202400521017 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDBCDB72314202400521017 /* SettingsViewController.swift */; };
 		BFE9B83E234A6D3900FB522F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE9B83D234A6D3900FB522F /* CoreLocation.framework */; };
 		BFE9B840234A6D5300FB522F /* LocaitonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9B83F234A6D5300FB522F /* LocaitonService.swift */; };
@@ -45,7 +44,6 @@
 		BF6001C0234602040029A4DD /* tickle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tickle.mp3; sourceTree = "<group>"; };
 		BF6001C1234602040029A4DD /* bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bell.mp3; sourceTree = "<group>"; };
 		BF9DD64F234B898600D5C63C /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
-		BFA19438234886D6003D0CCF /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		BFDBCDB72314202400521017 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BFE9B83D234A6D3900FB522F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BFE9B83F234A6D5300FB522F /* LocaitonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaitonService.swift; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 				BF462CB322FB561900FF37CC /* RoundButton.swift */,
 				BF4C6296230AEA1E004408E3 /* MainViewController.swift */,
 				BFDBCDB72314202400521017 /* SettingsViewController.swift */,
-				BFA19438234886D6003D0CCF /* DebugViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -237,7 +234,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFA19439234886D6003D0CCF /* DebugViewController.swift in Sources */,
 				BFDBCDB82314202400521017 /* SettingsViewController.swift in Sources */,
 				BF462CB422FB561900FF37CC /* RoundButton.swift in Sources */,
 				BF9DD650234B898600D5C63C /* Scheduler.swift in Sources */,
