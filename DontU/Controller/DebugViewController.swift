@@ -34,7 +34,6 @@ class DebugViewController: UIViewController, CLLocationManagerDelegate {
         }
         // updateRoute.text = getCurrentRoute()
         updateRoute.text = Route.getUid()
-        d(Route.getUid())
     }
     
     

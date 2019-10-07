@@ -249,6 +249,14 @@
                                     <navigationItem title="Don't U" id="8bl-Yj-B3D"/>
                                 </items>
                             </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VzZ-dp-gB7">
+                                <rect key="frame" x="162" y="225" width="197" height="371"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -264,6 +272,7 @@
                         <outlet property="btnChild" destination="PMt-xe-JuM" id="jfi-N8-jrY"/>
                         <outlet property="btnOther" destination="mxF-wU-Gj4" id="f0l-Ak-WNz"/>
                         <outlet property="btnPet" destination="cxr-Re-JEL" id="2E8-kH-FxE"/>
+                        <outlet property="debugText" destination="VzZ-dp-gB7" id="U7m-kM-Vgn"/>
                         <outlet property="navBar" destination="8bl-Yj-B3D" id="OaJ-1o-NIf"/>
                     </connections>
                 </viewController>

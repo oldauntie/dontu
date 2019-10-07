@@ -9,12 +9,15 @@
 import UIKit
 import AVFoundation
 import CoreLocation
+import UserNotifications
 
-class MainViewController: UIViewController, CLLocationManagerDelegate {
-
-    private var isArmed: Bool = false;
-    private var location: LocationService?
+class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
+    @IBOutlet weak var debugText: UITextView!
     
+    private var isArmed: Bool = false;
+    private var numberOfArmedDevices = 0
+    private var location: LocationService?
+    private var currentAudioRouteUid: String?
     
     @IBOutlet weak var btnChild: RoundButton!
     @IBOutlet weak var btnPet: RoundButton!
@@ -27,51 +30,70 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // setupNotifications()
-        
         location = LocationService.sharedInstance
-        
         location?.locationManager.delegate = self
         
-        location?.startUpdatingLocation()
+        // read current audio route
+        currentAudioRouteUid = Route.getUid()
         
-        /*
-        // Do any additional setup after loading the view.
+
         
-        // Create a navView to add to the navigation bar
-        let navView = UIView()
+        let center = UNUserNotificationCenter.current()
+
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            if granted {
+                print("Yay!")
+            } else {
+                print("D'oh")
+            }
+        }
         
-        // Create the label
-        let label = UILabel()
-        label.text = "Text"
-        label.sizeToFit()
-        label.center = navView.center
-        label.textAlignment = NSTextAlignment.center
-        
-        // Create the image view
-        let image = UIImageView()
-        image.image = UIImage(named: "bluetooth")
-        
-        // To maintain the image's aspect ratio:
-        let imageAspect = image.image!.size.width/image.image!.size.height
-        // Setting the image frame so that it's immediately before the text:
-        image.frame = CGRect(x: label.frame.origin.x-label.frame.size.height*imageAspect, y: label.frame.origin.y, width: label.frame.size.height*imageAspect, height: label.frame.size.height)
-        image.contentMode = UIView.ContentMode.scaleAspectFit
-        
-        // Add both the label and image view to the navView
-        navView.addSubview(label)
-        navView.addSubview(image)
-        
-        // Set the navigation bar's navigation item's titleView to the navView
-        self.navBar.titleView = navView
-        // Set the navView's frame to fit within the titleView
-        navView.sizeToFit()
-        */
+        center.delegate = self
     }
+    
+    
+    func scheduleNotification() {
+        let center = UNUserNotificationCenter.current()
+
+        let content = UNMutableNotificationContent()
+        content.title = "ContU"
+        content.body = "Forget about me..."
+        content.categoryIdentifier = "alarm"
+        content.userInfo = ["customData": "fizzbuzz"]
+        // content.sound = UNNotificationSound.default
+        
+        let soundName = UNNotificationSoundName("bell.mp3")
+        content.sound = UNNotificationSound(named: soundName)
+
+        var dateComponents = DateComponents()
+        dateComponents.hour = 10
+        dateComponents.minute = 30
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        center.add(request)
+    }
+    
+    
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         if let newLocation = locations.last{
-            // print("loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.latitude))")
+            debugText.text += "loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.latitude)) +\n"
+            
+            if currentAudioRouteUid != nil && currentAudioRouteUid != Route.getUid(){
+                alert(message: "route cambiata: \(String(describing: Route.getUid()))")
+                
+                // set the alarm
+                scheduleNotification()
+
+                // reset current route UID
+                currentAudioRouteUid = Route.getUid()
+            }
         }
     }
     
@@ -103,7 +125,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBAction func EnablePetControl(_ sender: UIButton) {
         changeState(sender)
-        alert(message: "timer fermo")
     }
 
     @IBAction func EnableOtherControl(_ sender: UIButton) {
@@ -121,18 +142,34 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     private func changeState(_ sender: UIButton)
     {
+        // manage button state and arm the app
         sender.isSelected = !sender.isSelected
         
         if(sender.isSelected == true)
         {
             // sender.setImage(UIImage(named:"pets"), for: UIControl.State.normal);
             sender.backgroundColor = UIColor.orange
+            numberOfArmedDevices += 1
+            
         }
         else
         {
             // sender.setImage(UIImage(named:"child_friendly"), for: UIControl.State.normal);
             sender.backgroundColor = UIColor.white
+            numberOfArmedDevices -= 1
         }
+        
+        
+        if numberOfArmedDevices > 0 {
+            // device is armed: start GPS localization
+            location?.startUpdatingLocation()
+            
+        }else{
+            // device is disarmed: stop GPS localization
+            location?.stopUpdatingLocation()
+        }
+        
+        
     }
     
     private func checkBluetoothConnection() -> Bool {
@@ -169,19 +206,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     
     
-    func setupNotifications() {
-        // Configure the audio session
-        let sessionInstance = AVAudioSession.sharedInstance()
-        try! sessionInstance.setCategory(AVAudioSession.Category.playAndRecord, options: .allowBluetooth)
-        try! sessionInstance.setActive(false)
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self,
-                                       selector: #selector(handleRouteChange),
-                                       name: AVAudioSession.routeChangeNotification,
-                                       object: sessionInstance)
-    }
-    
-    
+
     
     /*
     @objc func handleInterruption(notification: Notification) {
@@ -258,5 +283,5 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

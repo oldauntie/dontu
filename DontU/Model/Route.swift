@@ -10,7 +10,8 @@ import Foundation
 import AVFoundation
 
 class Route{
-    private static var UID: String?
+    private static var currentUid: String?
+    
     static func getCurrentRoute() -> AVAudioSessionRouteDescription{
         // carica le possibili audio route connesse e filtra solo quelle Bluetooth
         let avsession = AVAudioSession.sharedInstance()
@@ -29,11 +30,9 @@ class Route{
         // let out = route.outputs
         let out = getCurrentRoute().outputs
         for element in out{
-            UID = element.uid
             result = element.uid
         }
         
         return result
     }
-    
 }
