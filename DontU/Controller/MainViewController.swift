@@ -18,6 +18,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     private var numberOfArmedDevices = 0
     private var location: LocationService?
     private var currentAudioRouteUid: String?
+    private var scheduler: Scheduler?
     
     @IBOutlet weak var btnChild: RoundButton!
     @IBOutlet weak var btnPet: RoundButton!
@@ -36,22 +37,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         // read current audio route
         currentAudioRouteUid = Route.getUid()
         
-
         
-        let center = UNUserNotificationCenter.current()
-
-        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-            if granted {
-                print("Yay!")
-            } else {
-                print("D'oh")
-            }
-        }
-        
-        center.delegate = self
+        scheduler = Scheduler()
     }
     
-    
+    /*
     func scheduleNotification() {
         let center = UNUserNotificationCenter.current()
 
@@ -79,17 +69,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .badge, .sound])
     }
-    
+    */
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         if let newLocation = locations.last{
             debugText.text += "loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.latitude)) +\n"
             
             if currentAudioRouteUid != nil && currentAudioRouteUid != Route.getUid(){
-                alert(message: "route cambiata: \(String(describing: Route.getUid()))")
-                
                 // set the alarm
-                scheduleNotification()
+                scheduler?.scheduleNotification()
 
                 // reset current route UID
                 currentAudioRouteUid = Route.getUid()
@@ -100,8 +88,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // let loca = LocationService()
-        /*
         btnChild.isEnabled = false
         btnPet.isEnabled = false
         btnOther.isEnabled = false
@@ -110,8 +96,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             btnPet.isEnabled = true
             btnOther.isEnabled = true
         }
-        */
-        
         
     }
 
@@ -172,7 +156,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         
     }
     
-    private func checkBluetoothConnection() -> Bool {
+    private func checkBluetoothConnection2() -> Bool {
         // load user default in settings form
         let userDefaults = UserDefaults.standard
         let uid = userDefaults.object(forKey: "UID") as? String
@@ -205,7 +189,31 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     }
     
     
-    
+    private func checkBluetoothConnection() -> Bool {
+        // load user default in settings form
+        let userDefaults = UserDefaults.standard
+        let uid = userDefaults.object(forKey: "UID") as? String
+        // let port_name = userDefaults.object(forKey: "UID") as? String
+        
+        // bluetooth is not configured
+        if uid == nil && uid == ""{
+                return false
+        }
+        
+        if Route.isBluetooth(){
+            d("bt")
+            if Route.getUid() == uid{
+                d(" = ")
+
+                return true
+            }else{
+                d(" != ")
+
+                return false
+            }
+        }
+        return false
+    }
 
     
     /*
@@ -234,7 +242,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     }
     */
     
-    
+    /*
     @objc func handleRouteChange(_ notification: Notification) {
         let reasonValue = (notification as NSNotification).userInfo![AVAudioSessionRouteChangeReasonKey] as! UInt
         let routeDescription = (notification as NSNotification).userInfo![AVAudioSessionRouteChangePreviousRouteKey] as! AVAudioSessionRouteDescription?
@@ -273,6 +281,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             NSLog("%@\n", AVAudioSession.sharedInstance().currentRoute)
         }
     }
+ */
 
     /*
     // MARK: - Navigation

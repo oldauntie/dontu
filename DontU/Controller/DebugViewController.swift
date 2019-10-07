@@ -58,7 +58,6 @@ class DebugViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func didUpdateRoute(_ sender: Any) {
-        d("premuteo")
         updateUI()
     }
     

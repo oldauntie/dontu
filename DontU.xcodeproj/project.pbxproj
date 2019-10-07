@@ -20,6 +20,7 @@
 		BF4C629B230AF508004408E3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BF4C629A230AF508004408E3 /* Settings.bundle */; };
 		BF6001C2234602040029A4DD /* tickle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF6001C0234602040029A4DD /* tickle.mp3 */; };
 		BF6001C3234602040029A4DD /* bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF6001C1234602040029A4DD /* bell.mp3 */; };
+		BF9DD650234B898600D5C63C /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9DD64F234B898600D5C63C /* Scheduler.swift */; };
 		BFA19439234886D6003D0CCF /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA19438234886D6003D0CCF /* DebugViewController.swift */; };
 		BFDBCDB82314202400521017 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDBCDB72314202400521017 /* SettingsViewController.swift */; };
 		BFE9B83E234A6D3900FB522F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE9B83D234A6D3900FB522F /* CoreLocation.framework */; };
@@ -43,6 +44,7 @@
 		BF4C629A230AF508004408E3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		BF6001C0234602040029A4DD /* tickle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tickle.mp3; sourceTree = "<group>"; };
 		BF6001C1234602040029A4DD /* bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bell.mp3; sourceTree = "<group>"; };
+		BF9DD64F234B898600D5C63C /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		BFA19438234886D6003D0CCF /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		BFDBCDB72314202400521017 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BFE9B83D234A6D3900FB522F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -144,6 +146,7 @@
 				BF2DB20A2349B43D008EA571 /* Bluetooth.swift */,
 				BF2DB20C2349B473008EA571 /* Route.swift */,
 				BFE9B83F234A6D5300FB522F /* LocaitonService.swift */,
+				BF9DD64F234B898600D5C63C /* Scheduler.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				BFA19439234886D6003D0CCF /* DebugViewController.swift in Sources */,
 				BFDBCDB82314202400521017 /* SettingsViewController.swift in Sources */,
 				BF462CB422FB561900FF37CC /* RoundButton.swift in Sources */,
+				BF9DD650234B898600D5C63C /* Scheduler.swift in Sources */,
 				BF4C6297230AEA1E004408E3 /* MainViewController.swift in Sources */,
 				BF4A5DE622FB3E3800A0A646 /* AppDelegate.swift in Sources */,
 				BF2DB20D2349B473008EA571 /* Route.swift in Sources */,

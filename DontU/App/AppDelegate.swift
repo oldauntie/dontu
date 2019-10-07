@@ -25,30 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if error != nil{
                 print(error)
             }
-            
         }
-        
-        // center.delegate = self
-        
-        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
-        
         
         return true
     }
     
-    
+    /*
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if let tabBarController = window?.rootViewController as? UITabBarController,
-            let viewControllers = tabBarController.viewControllers
-            {
-                for viewController in viewControllers {
-                    if let fetchViewController = viewController as? DebugViewController {
-                        fetchViewController.updateUI()
-                        completionHandler(.newData)
-                    }
-                }
-            }
     }
+    */
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

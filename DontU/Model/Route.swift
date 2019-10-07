@@ -35,4 +35,20 @@ class Route{
         
         return result
     }
+    
+    static func isBluetooth() -> Bool {
+        var result: Bool = false
+        // let route  = getCurrentRoute().outputs
+        // let out = route.outputs
+        let out = getCurrentRoute().outputs
+        
+        // if current audio connection if a Bluetooth One return true
+        for element in out{
+            if element.portType == AVAudioSession.Port.bluetoothLE || element.portType == AVAudioSession.Port.bluetoothA2DP || element.portType == AVAudioSession.Port.bluetoothHFP {
+                // Is the current Bluetooth connection the one selected in preferences
+                result = true
+            }
+        }
+        return result
+    }
 }
