@@ -18,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+        
+        
+        
+        
         return true
     }
     
@@ -28,12 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             {
                 for viewController in viewControllers {
                     if let fetchViewController = viewController as? DebugViewController {
-                        /*
-                        fetchViewController.fetch {
-                          fetchViewController.updateUI()
-                          completionHandler(.newData)
-                        }
-                        */
                         fetchViewController.updateUI()
                         completionHandler(.newData)
                     }

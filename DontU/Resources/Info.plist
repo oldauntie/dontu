@@ -20,19 +20,25 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationUsageDescription</key>
+	<string>Location services are use to detect when you are leaving the car and warn you are forgetting something.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>requestWhenInUseAuthorization</string>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>processing</string>
-		<string>remote-notification</string>
-		<string>external-accessory</string>
 		<string>fetch</string>
+		<string>location</string>
+		<string>processing</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
-	<array/>
+	<array>
+		<string>location-services</string>
+		<string>gps</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

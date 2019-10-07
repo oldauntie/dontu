@@ -8,10 +8,13 @@
 
 import UIKit
 import AVFoundation
+import CoreLocation
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, CLLocationManagerDelegate {
 
     private var isArmed: Bool = false;
+    private var location: LocationService?
+    
     
     @IBOutlet weak var btnChild: RoundButton!
     @IBOutlet weak var btnPet: RoundButton!
@@ -24,8 +27,13 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNotifications()
-        d("si parte")
+        // setupNotifications()
+        
+        location = LocationService.sharedInstance
+        
+        location?.locationManager.delegate = self
+        
+        location?.startUpdatingLocation()
         
         /*
         // Do any additional setup after loading the view.
@@ -61,9 +69,16 @@ class MainViewController: UIViewController {
         */
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        if let newLocation = locations.last{
+            // print("loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.latitude))")
+        }
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // let loca = LocationService()
         /*
         btnChild.isEnabled = false
         btnPet.isEnabled = false
@@ -155,9 +170,6 @@ class MainViewController: UIViewController {
     
     
     func setupNotifications() {
-        
-        d("setupNotifications")
-        
         // Configure the audio session
         let sessionInstance = AVAudioSession.sharedInstance()
         try! sessionInstance.setCategory(AVAudioSession.Category.playAndRecord, options: .allowBluetooth)

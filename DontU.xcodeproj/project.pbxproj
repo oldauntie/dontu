@@ -22,6 +22,8 @@
 		BF6001C3234602040029A4DD /* bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF6001C1234602040029A4DD /* bell.mp3 */; };
 		BFA19439234886D6003D0CCF /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA19438234886D6003D0CCF /* DebugViewController.swift */; };
 		BFDBCDB82314202400521017 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDBCDB72314202400521017 /* SettingsViewController.swift */; };
+		BFE9B83E234A6D3900FB522F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE9B83D234A6D3900FB522F /* CoreLocation.framework */; };
+		BFE9B840234A6D5300FB522F /* LocaitonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9B83F234A6D5300FB522F /* LocaitonService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		BF6001C1234602040029A4DD /* bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bell.mp3; sourceTree = "<group>"; };
 		BFA19438234886D6003D0CCF /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		BFDBCDB72314202400521017 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		BFE9B83D234A6D3900FB522F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		BFE9B83F234A6D5300FB522F /* LocaitonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaitonService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFE9B83E234A6D3900FB522F /* CoreLocation.framework in Frameworks */,
 				BF2E0AAC2346841100DE7EB1 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,6 +90,7 @@
 		BF2E0AAA2346841100DE7EB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BFE9B83D234A6D3900FB522F /* CoreLocation.framework */,
 				BF2E0AAB2346841100DE7EB1 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
@@ -137,6 +143,7 @@
 			children = (
 				BF2DB20A2349B43D008EA571 /* Bluetooth.swift */,
 				BF2DB20C2349B473008EA571 /* Route.swift */,
+				BFE9B83F234A6D5300FB522F /* LocaitonService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -233,6 +240,7 @@
 				BF4C6297230AEA1E004408E3 /* MainViewController.swift in Sources */,
 				BF4A5DE622FB3E3800A0A646 /* AppDelegate.swift in Sources */,
 				BF2DB20D2349B473008EA571 /* Route.swift in Sources */,
+				BFE9B840234A6D5300FB522F /* LocaitonService.swift in Sources */,
 				BF06006022FD5A4900C669F4 /* Utility.swift in Sources */,
 				BF2DB20B2349B43D008EA571 /* Bluetooth.swift in Sources */,
 			);

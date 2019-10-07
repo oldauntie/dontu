@@ -8,11 +8,15 @@
 
 import UIKit
 import AVFoundation
+import CoreLocation
 
-class DebugViewController: UIViewController {
+class DebugViewController: UIViewController, CLLocationManagerDelegate {
 
-    @IBOutlet weak var timeLabel: UITextField!
+    private var location: LocationService?
     
+    @IBOutlet weak var timeLabel: UITextField!
+   
+    @IBOutlet weak var debugText: UITextView!
     // var currentTime: Date?
     // private var time: Date?
     
@@ -37,8 +41,21 @@ class DebugViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        location = LocationService.sharedInstance
+        
+        location?.locationManager.delegate = self
+        
+        location?.startUpdatingLocation()
+        
         // Do any additional setup after loading the view.
         updateUI()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        if let newLocation = locations.last{
+            print("loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.latitude))")
+            debugText.text! += "loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.latitude)) \n"
+        }
     }
     
     @IBAction func didUpdateRoute(_ sender: Any) {
