@@ -34,11 +34,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         location = LocationService.sharedInstance
         location?.locationManager.delegate = self
         
-        // read current audio route
-        currentAudioRouteUid = Route.getUid()
-        
-        
+        // used to setup the alarm
         scheduler = Scheduler()
+        
+        // used to check changes in AudioRoute and enable/disable buttons
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(handleRouteChange),
+                                       name: AVAudioSession.routeChangeNotification,
+                                       object: nil)
     }
     
     /*
@@ -78,7 +82,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             if currentAudioRouteUid != nil && currentAudioRouteUid != Route.getUid(){
                 // set the alarm
                 scheduler?.scheduleNotification()
-
                 // reset current route UID
                 currentAudioRouteUid = Route.getUid()
             }
@@ -88,6 +91,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        updateUI()
+    }
+    
+    func updateUI() -> Void{
+        // read current audio route
+        currentAudioRouteUid = Route.getUid()
+        
         btnChild.isEnabled = false
         btnPet.isEnabled = false
         btnOther.isEnabled = false
@@ -96,7 +106,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             btnPet.isEnabled = true
             btnOther.isEnabled = true
         }
-        
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -134,7 +143,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             // sender.setImage(UIImage(named:"pets"), for: UIControl.State.normal);
             sender.backgroundColor = UIColor.orange
             numberOfArmedDevices += 1
-            
         }
         else
         {
@@ -156,39 +164,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         
     }
     
-    private func checkBluetoothConnection2() -> Bool {
-        // load user default in settings form
-        let userDefaults = UserDefaults.standard
-        let uid = userDefaults.object(forKey: "UID") as? String
-        // let port_name = userDefaults.object(forKey: "UID") as? String
-        
-        // bluetooth is not configured
-        if uid == nil && uid == ""{
-                return false
-        }
-        
-        // read current audio route into variable out
-        let avsession = AVAudioSession.sharedInstance()
-        try! avsession.setCategory(AVAudioSession.Category.playAndRecord, options: .allowBluetooth)
-        try! avsession.setActive(true)
-        let route  = avsession.currentRoute
-        let out = route.outputs
-        
-        
-        // if current audio connection if a Bluetooth One return true
-        for element in out{
-            if element.portType == AVAudioSession.Port.bluetoothLE || element.portType == AVAudioSession.Port.bluetoothA2DP || element.portType == AVAudioSession.Port.bluetoothHFP {
-                // Is the current Bluetooth connection the one selected in preferences
-                if uid == element.uid {
-                    return true
-                }
-            }
-        }
-        
-        return false
-    }
-    
-    
     private func checkBluetoothConnection() -> Bool {
         // load user default in settings form
         let userDefaults = UserDefaults.standard
@@ -201,14 +176,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         }
         
         if Route.isBluetooth(){
-            d("bt")
             if Route.getUid() == uid{
-                d(" = ")
-
                 return true
             }else{
-                d(" != ")
-
                 return false
             }
         }
@@ -242,8 +212,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     }
     */
     
-    /*
     @objc func handleRouteChange(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.updateUI()
+        }
+        
+        /*
         let reasonValue = (notification as NSNotification).userInfo![AVAudioSessionRouteChangeReasonKey] as! UInt
         let routeDescription = (notification as NSNotification).userInfo![AVAudioSessionRouteChangePreviousRouteKey] as! AVAudioSessionRouteDescription?
 
@@ -274,14 +248,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             NSLog("     ReasonUnknown(%zu)", reasonValue)
         }
 
+        
         if let prevRout = routeDescription {
             NSLog("Previous route:\n")
             NSLog("%@", prevRout)
             NSLog("Current route:\n")
             NSLog("%@\n", AVAudioSession.sharedInstance().currentRoute)
         }
-    }
  */
+    }
 
     /*
     // MARK: - Navigation
