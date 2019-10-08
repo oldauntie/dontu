@@ -44,6 +44,22 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
                                        object: nil)
         
         debugText.isHidden = !Global.debug
+        
+        // create a new style
+        var style = ToastStyle()
+
+        // this is just one of many style options
+        style.messageColor = .orange
+
+        // or perhaps you want to use this style for all toasts going forward?
+        // just set the shared style and there's no need to provide the style again
+        ToastManager.shared.style = style
+
+        // toggle "tap to dismiss" functionality
+        ToastManager.shared.isTapToDismissEnabled = true
+
+        // toggle queueing behavior
+        // ToastManager.shared.isQueueEnabled = true
     }
     
 
@@ -51,21 +67,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        updateUI()
+        isValidBluetoothConnection()
     }
     
-    func updateUI() -> Void{
-        /*
-        btnChild.isEnabled = false
-        btnPet.isEnabled = false
-        btnOther.isEnabled = false
-        if checkBluetoothConnection() == true{
-            btnChild.isEnabled = true
-            btnPet.isEnabled = true
-            btnOther.isEnabled = true
-        }
-        */
-    }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -84,27 +88,47 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     }
     
     
-    func alert(message: String, title: String = "") {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(OKAction)
-        self.present(alertController, animated: true, completion: nil)
+    func isValidBluetoothConnection() -> Bool{
+        // load user default in settings form
+        let userDefaults = UserDefaults.standard
+        let uid = userDefaults.object(forKey: "UID") as? String
+        if location?.isUpdatingLocation == false{
+            if uid == nil || uid == ""{
+                self.view.makeToast("No Bluetooh connection configued yet. Select one in settings", duration: 3.0, position: .bottom)
+                
+                return false
+            }
+
+            if Bluetooth.isValidConnection() == false{
+                self.view.makeToast("Phone is not connected to Car Audio Bluetooh. Connect the phone or select another one in settings", duration: 5.0, position: .bottom)
+                
+                return false
+            }
+        }
+        return true
     }
     
     
     private func changeState(_ sender: UIButton)
     {
         // load user default in settings form
-        let userDefaults = UserDefaults.standard
-        let uid = userDefaults.object(forKey: "UID") as? String
+        // let userDefaults = UserDefaults.standard
+        // let uid = userDefaults.object(forKey: "UID") as? String
         if location?.isUpdatingLocation == false{
+            /*
             if uid == nil || uid == ""{
-                alert(message: "No Bluetooh connection configued yet. Select one in settings", title: "Warning")
+                self.view.makeToast("No Bluetooh connection configued yet. Select one in settings", duration: 3.0, position: .bottom)
+                
                 return
             }
 
-            if checkBluetoothConnection() == false{
-                alert(message: "Phone is not connected to Car Audio Bluetooh. Connect the phone or select another one in settings", title: "Warning")
+            if Bluetooth.isValidConnection() == false{
+                self.view.makeToast("Phone is not connected to Car Audio Bluetooh. Connect the phone or select another one in settings", duration: 3.0, position: .bottom)
+                
+                return
+            }
+            */
+            if isValidBluetoothConnection() == false{
                 return
             }
         }
@@ -142,6 +166,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         
     }
     
+    
+    // @todo TBE
+    /*
     private func checkBluetoothConnection() -> Bool {
         // load user default in settings form
         let userDefaults = UserDefaults.standard
@@ -156,12 +183,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         }
         return false
     }
+    */
 
     
     
     @objc func handleRouteChange(_ notification: Notification) {
         DispatchQueue.main.async {
-            self.updateUI()
+            self.isValidBluetoothConnection()
         }
     }
     
