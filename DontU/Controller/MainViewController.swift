@@ -16,7 +16,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     
     // private var isArmed: Bool = false;
     private var numberOfArmedDevices = 0
-    private var location: LocationService?
+    private var location: Location?
     private var currentAudioRouteUid: String?
     private var scheduler: Scheduler?
     
@@ -25,16 +25,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     @IBOutlet weak var btnOther: RoundButton!
     
     
-    @IBOutlet weak var debug: UITextField!
+    // @IBOutlet weak var debug: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        location = LocationService.sharedInstance
+        location = Location.sharedInstance
         location?.locationManager.delegate = self
-        
-        // read current audio route
-        currentAudioRouteUid = Route.getUid()
         
         // used to setup the alarm
         scheduler = Scheduler()
@@ -45,6 +42,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
                                        selector: #selector(handleRouteChange),
                                        name: AVAudioSession.routeChangeNotification,
                                        object: nil)
+        
+        debugText.isHidden = !Global.debug
     }
     
 
@@ -98,16 +97,20 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         // load user default in settings form
         let userDefaults = UserDefaults.standard
         let uid = userDefaults.object(forKey: "UID") as? String
-        
-        if uid == nil || uid == ""{
-            alert(message: "No Bluetooh connection configued yet. Select one in settings", title: "Warning")
-            return
-        }
+        if location?.isUpdatingLocation == false{
+            if uid == nil || uid == ""{
+                alert(message: "No Bluetooh connection configued yet. Select one in settings", title: "Warning")
+                return
+            }
 
-        if checkBluetoothConnection() == false{
-            alert(message: "Phone is not connected to Car Audio Bluetooh. Connect the phone or select another one in settings", title: "Warning")
-            return
+            if checkBluetoothConnection() == false{
+                alert(message: "Phone is not connected to Car Audio Bluetooh. Connect the phone or select another one in settings", title: "Warning")
+                return
+            }
         }
+        
+        // read current audio route
+        currentAudioRouteUid = Route.getUid()
         
         // manage button state and arm the app
         sender.isSelected = !sender.isSelected

@@ -9,13 +9,12 @@
 import Foundation
 import CoreLocation
 
-class LocationService: NSObject, CLLocationManagerDelegate{
+class Location: NSObject, CLLocationManagerDelegate{
     
-    public static var sharedInstance = LocationService()
+    public static var sharedInstance = Location()
     let locationManager: CLLocationManager
-    // var locationDataArray: [CLLocation]
-    // var useFilter: Bool
     
+    var isUpdatingLocation = false
     
     override init() {
         locationManager = CLLocationManager()
@@ -26,40 +25,39 @@ class LocationService: NSObject, CLLocationManagerDelegate{
         locationManager.requestWhenInUseAuthorization()
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
-        // locationDataArray = [CLLocation]()
-        
-        // useFilter = true
         
         super.init()
         
         locationManager.delegate = self
-        
     }
     
     
     func startUpdatingLocation(){
         if CLLocationManager.locationServicesEnabled(){
             locationManager.startUpdatingLocation()
+            isUpdatingLocation = true
         }else{
             // show an error
-            d("ERRORE")
+            d("ERROR")
         }
     }
     
     func stopUpdatingLocation(){
         if CLLocationManager.locationServicesEnabled(){
             locationManager.stopUpdatingLocation()
+            isUpdatingLocation = false
         }else{
             // show an error
-            d("ERRORE")
+            d("ERROR")
         }
     }
     
     // @todo delete me TBE
-    
+    /*
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         if let newLocation = locations.last{
             print("loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.latitude))")
         }
     }
+    */
 }
