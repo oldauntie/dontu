@@ -36,6 +36,18 @@ class Route{
         return result
     }
     
+    static func getPortName() -> String? {
+        var result: String? = nil
+        // let route  = getCurrentRoute().outputs
+        // let out = route.outputs
+        let out = getCurrentRoute().outputs
+        for element in out{
+            result = element.portName
+        }
+        
+        return result!
+    }
+    
     static func isBluetooth() -> Bool {
         var result: Bool = false
         // let route  = getCurrentRoute().outputs
@@ -50,5 +62,20 @@ class Route{
             }
         }
         return result
+    }
+    
+    public static func isValidConnection() -> Bool {
+        // load user default in settings form
+        let userDefaults = UserDefaults.standard
+        let uid = userDefaults.object(forKey: "UID") as? String
+        
+        if isBluetooth(){
+            if getUid() == uid{
+                return true
+            }else{
+                return false
+            }
+        }
+        return false
     }
 }

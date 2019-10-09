@@ -99,10 +99,17 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
                 return false
             }
 
-            if Bluetooth.isValidConnection() == false{
-                self.view.makeToast("Phone is not connected to Car Audio Bluetooh. Connect the phone or select another one in settings", duration: 5.0, position: .bottom)
+            if Route.isValidConnection() == false{
+                self.view.makeToast("Phone is not connected to Car Audio Bluetooh. Connect the phone or select another one in settings", duration: 3.0, position: .bottom)
                 
                 return false
+            }else{
+                // create a new style
+                var style = ToastStyle()
+
+                // this is just one of many style options
+                style.backgroundColor = .lightGray
+                self.view.makeToast("Connected to \(Route.getPortName()!).", duration: 3.0, position: .bottom, style: style)
             }
         }
         return true
