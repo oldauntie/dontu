@@ -67,7 +67,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        isValidBluetoothConnection()
+        _ = self.isValidBluetoothConnection()
     }
     
 
@@ -122,19 +122,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         // let userDefaults = UserDefaults.standard
         // let uid = userDefaults.object(forKey: "UID") as? String
         if location?.isUpdatingLocation == false{
-            /*
-            if uid == nil || uid == ""{
-                self.view.makeToast("No Bluetooh connection configued yet. Select one in settings", duration: 3.0, position: .bottom)
-                
-                return
-            }
-
-            if Bluetooth.isValidConnection() == false{
-                self.view.makeToast("Phone is not connected to Car Audio Bluetooh. Connect the phone or select another one in settings", duration: 3.0, position: .bottom)
-                
-                return
-            }
-            */
             if isValidBluetoothConnection() == false{
                 return
             }
@@ -173,25 +160,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         
     }
     
-    
-    // @todo TBE
-    /*
-    private func checkBluetoothConnection() -> Bool {
-        // load user default in settings form
-        let userDefaults = UserDefaults.standard
-        let uid = userDefaults.object(forKey: "UID") as? String
-        
-        if Route.isBluetooth(){
-            if Route.getUid() == uid{
-                return true
-            }else{
-                return false
-            }
-        }
-        return false
-    }
-    */
-
     
     
     @objc func handleRouteChange(_ notification: Notification) {

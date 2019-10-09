@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BF06006022FD5A4900C669F4 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF06005F22FD5A4900C669F4 /* Utility.swift */; };
-		BF2DB20B2349B43D008EA571 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DB20A2349B43D008EA571 /* Bluetooth.swift */; };
 		BF2DB20D2349B473008EA571 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DB20C2349B473008EA571 /* Route.swift */; };
 		BF2E0AAC2346841100DE7EB1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2E0AAB2346841100DE7EB1 /* AudioToolbox.framework */; };
 		BF462CB422FB561900FF37CC /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF462CB322FB561900FF37CC /* RoundButton.swift */; };
@@ -30,7 +29,6 @@
 
 /* Begin PBXFileReference section */
 		BF06005F22FD5A4900C669F4 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utility.swift; path = ../Utility.swift; sourceTree = "<group>"; };
-		BF2DB20A2349B43D008EA571 /* Bluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bluetooth.swift; sourceTree = "<group>"; };
 		BF2DB20C2349B473008EA571 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		BF2E0AA92346841100DE7EB1 /* DontU.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DontU.entitlements; sourceTree = "<group>"; };
 		BF2E0AAB2346841100DE7EB1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -145,7 +143,6 @@
 		BF6001BE2345FFF80029A4DD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BF2DB20A2349B43D008EA571 /* Bluetooth.swift */,
 				BF2DB20C2349B473008EA571 /* Route.swift */,
 				BFE9B83F234A6D5300FB522F /* Location.swift */,
 				BF9DD64F234B898600D5C63C /* Scheduler.swift */,
@@ -250,7 +247,6 @@
 				BF06006022FD5A4900C669F4 /* Utility.swift in Sources */,
 				BFCBF5D4234C6B83005AFA0D /* Toast.swift in Sources */,
 				BFCBF5D2234C54B6005AFA0D /* Global.swift in Sources */,
-				BF2DB20B2349B43D008EA571 /* Bluetooth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
