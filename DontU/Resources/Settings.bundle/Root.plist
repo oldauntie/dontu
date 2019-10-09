@@ -30,15 +30,14 @@
 			<key>Key</key>
 			<string>Distance</string>
 			<key>DefaultValue</key>
-			<integer>0</integer>
+			<integer>5</integer>
 			<key>Titles</key>
 			<array>
-				<string>0 mt.</string>
-				<string>1 mt.</string>
-				<string>2 mt.</string>
 				<string>3 mt.</string>
 				<string>5 mt.</string>
 				<string>8 mt.</string>
+				<string>13 mt.</string>
+				<string>21 mt.</string>
 			</array>
 			<key>Values</key>
 			<array>
@@ -47,7 +46,6 @@
 				<integer>2</integer>
 				<integer>3</integer>
 				<integer>4</integer>
-				<integer>5</integer>
 			</array>
 		</dict>
 		<dict>

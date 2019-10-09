@@ -30,6 +30,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // init a singleton location service
         location = Location.sharedInstance
         location?.locationManager.delegate = self
         
@@ -59,20 +60,34 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         ToastManager.shared.isTapToDismissEnabled = true
 
         // toggle queueing behavior
-        // ToastManager.shared.isQueueEnabled = true
+        ToastManager.shared.isQueueEnabled = false
     }
     
 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        _ = self.isValidBluetoothConnection()
+        if numberOfArmedDevices > 0 {
+            // create a new style
+            var style = ToastStyle()
+            
+            // this is just one of many style options
+            style.messageColor = .green
+            
+            self.view.makeToast("App resumed (running)...", duration: 3.0, position: .bottom, style: style)
+            startLocation()
+        }else{
+            _ = self.isValidBluetoothConnection()
+        }
     }
     
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        if numberOfArmedDevices > 0 {
+            alert(message: "App is now paused. Return to main window to resume")
+            stopLocation()
+        }
     }
     
     @IBAction func EnableChildControl(_ sender: UIButton) {
@@ -92,15 +107,16 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         // load user default in settings form
         let userDefaults = UserDefaults.standard
         let uid = userDefaults.object(forKey: "UID") as? String
+        let portName = userDefaults.object(forKey: "PortName") as? String
         if location?.isUpdatingLocation == false{
             if uid == nil || uid == ""{
-                self.view.makeToast("No Bluetooh connection configued yet. Select one in settings", duration: 3.0, position: .bottom)
+                self.view.makeToast("No Bluetooh connection configued yet. Select one in settings", duration: 5.0, position: .bottom)
                 
                 return false
             }
 
             if Route.isValidConnection() == false{
-                self.view.makeToast("Phone is not connected to Car Audio Bluetooh. Connect the phone or select another one in settings", duration: 3.0, position: .bottom)
+                self.view.makeToast("\(portName!) Audio Bluetooh is now disconnected.\nConnect to \(portName!) or select another one from Settings", duration: 3.0, position: .bottom)
                 
                 return false
             }else{
@@ -108,7 +124,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
                 var style = ToastStyle()
 
                 // this is just one of many style options
-                style.backgroundColor = .lightGray
+                style.messageColor = .green
                 self.view.makeToast("Connected to \(Route.getPortName()!).", duration: 3.0, position: .bottom, style: style)
             }
         }
@@ -118,9 +134,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     
     private func changeState(_ sender: UIButton)
     {
-        // load user default in settings form
-        // let userDefaults = UserDefaults.standard
-        // let uid = userDefaults.object(forKey: "UID") as? String
         if location?.isUpdatingLocation == false{
             if isValidBluetoothConnection() == false{
                 return
@@ -140,38 +153,46 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         }
         else
         {
-            // sender.setImage(UIImage(named:"child_friendly"), for: UIControl.State.normal);
             sender.backgroundColor = UIColor.white
             numberOfArmedDevices -= 1
         }
         
         // start GPS
         if numberOfArmedDevices > 0 {
-            // device is armed: start GPS localization
-            d("start GPS")
-            location?.startUpdatingLocation()
-            
+            startLocation()
         }else{
-            // device is disarmed: stop GPS localization
-            d("stop GPS")
-            location?.stopUpdatingLocation()
+            stopLocation()
         }
         
         
     }
     
     
-    
-    @objc func handleRouteChange(_ notification: Notification) {
-        DispatchQueue.main.async {
-            self.isValidBluetoothConnection()
-        }
+    func startLocation() -> Void {
+        // device is armed: start GPS localization
+        d("start GPS")
+        let userDefaults = UserDefaults.standard
+        let distances: [Int] = [3, 5, 8, 13, 21]
+        let index = userDefaults.integer(forKey: "Distance")
+        d("\(distances[index])")
+        
+        location?.setDistanceFilter(distance: distances[index])
+        location?.startUpdatingLocation()
     }
+    
+    func stopLocation(){
+        // device is disarmed: stop GPS localization
+        d("stop GPS")
+        location?.stopUpdatingLocation()
+    }
+    
+    
+
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         if let newLocation = locations.last{
+            // @todo TBE
             debugText.text += "loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)) +\n"
-            
             d("current: \(String(describing: currentAudioRouteUid)) Route.getUid(): \(String(describing: Route.getUid()))")
             
             
@@ -182,6 +203,21 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
                 currentAudioRouteUid = Route.getUid()
             }
         }
+    }
+    
+    
+    @objc func handleRouteChange(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.isValidBluetoothConnection()
+        }
+    }
+    
+    
+    func alert(message: String, title: String = "") {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(OKAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 
     /*

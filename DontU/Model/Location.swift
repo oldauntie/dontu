@@ -31,6 +31,9 @@ class Location: NSObject, CLLocationManagerDelegate{
         locationManager.delegate = self
     }
     
+    func setDistanceFilter(distance: Int) -> Void{
+        locationManager.distanceFilter = CLLocationDistance(distance)
+    }
     
     func startUpdatingLocation(){
         if CLLocationManager.locationServicesEnabled(){

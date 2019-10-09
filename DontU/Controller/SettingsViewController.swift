@@ -76,15 +76,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
                 
         // load user default in settings form
         let userDefaults = UserDefaults.standard
-        other.text = userDefaults.object(forKey: "Other") as? String
-        distance.selectedSegmentIndex  = userDefaults.integer(forKey: "Distance")
-        
-        selected_portname.text = userDefaults.object(forKey: "PortName") as? String
         selected_uid.text = userDefaults.object(forKey: "UID") as? String
-        
-        
-        
-        
+        selected_portname.text = userDefaults.object(forKey: "PortName") as? String
+        distance.selectedSegmentIndex  = userDefaults.integer(forKey: "Distance")
+        other.text = userDefaults.object(forKey: "Other") as? String
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -92,10 +87,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         
         // save user defaul from settings
         let userDefaults = UserDefaults.standard
+        userDefaults.set(selected_uid.text, forKey: "UID")
+        userDefaults.set(selected_portname.text, forKey: "PortName")
         userDefaults.set(distance.selectedSegmentIndex, forKey: "Distance")
         userDefaults.set(other.text, forKey: "Other")
-        userDefaults.set(selected_portname.text, forKey: "PortName")
-        userDefaults.set(selected_uid.text, forKey: "UID")
     }
     
     
