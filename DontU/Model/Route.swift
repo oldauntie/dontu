@@ -48,6 +48,18 @@ class Route{
         return result!
     }
     
+    static func getPortType() -> String? {
+        var result: String? = nil
+        // let route  = getCurrentRoute().outputs
+        // let out = route.outputs
+        let out = getCurrentRoute().outputs
+        for element in out{
+            result = element.portType.rawValue
+        }
+        
+        return result!
+    }
+    
     static func isBluetooth() -> Bool {
         var result: Bool = false
         // let route  = getCurrentRoute().outputs

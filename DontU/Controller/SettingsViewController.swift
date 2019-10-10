@@ -17,7 +17,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var selected_portname: UITextField!
     @IBOutlet weak var selected_uid: UILabel!
-    
     @IBOutlet weak var distance: UISegmentedControl!
     @IBOutlet weak var other: UITextField!
     
@@ -28,8 +27,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             selected_portname.text = available_portname.text
             selected_uid.text = available_uid.text
         }
-        
-        
     }
     
     
@@ -41,40 +38,38 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tap)
         
         other.delegate = self
+        
+        
+        // used to check changes in AudioRoute and enable/disable buttons
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(handleRouteChange),
+                                       name: AVAudioSession.routeChangeNotification,
+                                       object: nil)
     }
     
+    func loadCurrentRouteInfo() -> Void{
+        if Route.isBluetooth() == true{
+            available_portname.text = Route.getPortName()
+            available_porttype.text = Route.getPortType()
+            available_uid.text = Route.getUid()
+            
+            use_button.isEnabled = true
+            
+        }else{
+            available_portname.text = "No Bluetooth Available"
+            available_porttype.text = ""
+            available_uid.text = ""
+            
+            use_button.isEnabled = false
+        }
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
-        // carica le possibili audio route connesse e filtra solo quelle Bluetooth
-        let avsession = AVAudioSession.sharedInstance()
-        
-        try! avsession.setCategory(AVAudioSession.Category.playAndRecord, options: .allowBluetooth)
-        try! avsession.setActive(false)
-        
-        let route  = avsession.currentRoute
-        
-        let out = route.outputs
-        for element in out{
-            if element.portType == AVAudioSession.Port.bluetoothLE || element.portType == AVAudioSession.Port.bluetoothA2DP || element.portType == AVAudioSession.Port.bluetoothHFP {
-                
-                available_portname.text = element.portName
-                available_porttype.text = element.portType.rawValue
-                available_uid.text = element.uid
-                
-                use_button.isEnabled = true;
-            }else{
-                available_portname.text = "No Bluetooth Available"
-                available_porttype.text = ""
-                available_uid.text = ""
-                
-                use_button.isEnabled = false;
-            }
-        }
-                
         // load user default in settings form
+        loadCurrentRouteInfo()
         let userDefaults = UserDefaults.standard
         selected_uid.text = userDefaults.object(forKey: "UID") as? String
         selected_portname.text = userDefaults.object(forKey: "PortName") as? String
@@ -103,6 +98,12 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    @objc func handleRouteChange(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.loadCurrentRouteInfo()
+        }
     }
     
     /*

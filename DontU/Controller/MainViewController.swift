@@ -12,7 +12,6 @@ import CoreLocation
 import UserNotifications
 
 class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
-    @IBOutlet weak var debugText: UITextView!
     
     // private var isArmed: Bool = false;
     private var numberOfArmedDevices = 0
@@ -24,9 +23,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     @IBOutlet weak var btnPet: RoundButton!
     @IBOutlet weak var btnOther: RoundButton!
     
-    
-    // @IBOutlet weak var debug: UITextField!
-    
+    // used for debug purpose only
+    @IBOutlet weak var debugText: UITextView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +43,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
                                        name: AVAudioSession.routeChangeNotification,
                                        object: nil)
         
+        // hide / show debug textView
         debugText.isHidden = !Global.debug
         
         // create a new style
@@ -84,10 +84,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if numberOfArmedDevices > 0 {
-            alert(message: "App is now paused. Return to main window to resume")
-            stopLocation()
-        }
     }
     
     @IBAction func EnableChildControl(_ sender: UIButton) {
@@ -157,11 +153,27 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             numberOfArmedDevices -= 1
         }
         
-        // start GPS
+        // start / stop GPS services
         if numberOfArmedDevices > 0 {
             startLocation()
+            
+            let tabBarControllerItems = self.tabBarController?.tabBar.items
+
+            if let tabArray = tabBarControllerItems {
+                let tabBarItem1 = tabArray[1]
+                
+                tabBarItem1.isEnabled = false
+            }
         }else{
             stopLocation()
+            
+            let tabBarControllerItems = self.tabBarController?.tabBar.items
+
+            if let tabArray = tabBarControllerItems {
+                let tabBarItem1 = tabArray[1]
+                
+                tabBarItem1.isEnabled = true
+            }
         }
         
         
@@ -170,6 +182,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     
     func startLocation() -> Void {
         // device is armed: start GPS localization
+        // @todo: TBE
         d("start GPS")
         let userDefaults = UserDefaults.standard
         let distances: [Int] = [3, 5, 8, 13, 21]
@@ -182,6 +195,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     
     func stopLocation(){
         // device is disarmed: stop GPS localization
+        // @todo: TBE
         d("stop GPS")
         location?.stopUpdatingLocation()
     }
@@ -208,16 +222,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     
     @objc func handleRouteChange(_ notification: Notification) {
         DispatchQueue.main.async {
-            self.isValidBluetoothConnection()
+            _ = self.isValidBluetoothConnection()
         }
-    }
-    
-    
-    func alert(message: String, title: String = "") {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(OKAction)
-        self.present(alertController, animated: true, completion: nil)
     }
 
     /*

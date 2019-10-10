@@ -54,13 +54,4 @@ class Location: NSObject, CLLocationManagerDelegate{
             d("ERROR")
         }
     }
-    
-    // @todo delete me TBE
-    /*
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        if let newLocation = locations.last{
-            print("loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.latitude))")
-        }
-    }
-    */
 }

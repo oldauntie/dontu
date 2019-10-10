@@ -167,9 +167,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ipl-fA-o6l"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="settings" landscapeImage="settings" id="lu4-Mj-3z3">
-                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="0.0"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="" image="settings" landscapeImage="settings" id="lu4-Mj-3z3"/>
                     <connections>
                         <outlet property="available_portname" destination="o2c-yy-E2e" id="WCt-3c-LPZ"/>
                         <outlet property="available_porttype" destination="1vz-a3-w1e" id="7Hx-xu-sZG"/>
@@ -281,9 +279,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nyf-f7-EJG"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="child_friendly" landscapeImage="child_friendly" id="4oe-dw-ez1">
-                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="0.0"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="" image="child_friendly" landscapeImage="child_friendly" id="4oe-dw-ez1"/>
                     <connections>
                         <outlet property="btnChild" destination="PMt-xe-JuM" id="jfi-N8-jrY"/>
                         <outlet property="btnOther" destination="mxF-wU-Gj4" id="f0l-Ak-WNz"/>
@@ -303,6 +299,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                     </tabBar>
                     <connections>
                         <segue destination="7Xa-rp-jJw" kind="relationship" relationship="viewControllers" id="LIp-MC-WsD"/>

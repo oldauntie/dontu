@@ -9,7 +9,7 @@
 import Foundation
 
 struct Global {
-    static var debug : Bool = true
+    static var debug : Bool = false
 }
 
 /* todo:
