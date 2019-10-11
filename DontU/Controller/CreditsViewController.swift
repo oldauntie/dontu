@@ -23,24 +23,13 @@
 
 import UIKit
 
-@IBDesignable
-class RoundButton: UIButton {
-    
-    @IBInspectable var cornerRadius: CGFloat = 0{
-        didSet{
-            self.layer.cornerRadius = cornerRadius
-        }
+class CreditsViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
     
-    @IBInspectable var borderWidth: CGFloat = 0{
-        didSet{
-            self.layer.borderWidth = borderWidth
-        }
-    }
-    
-    @IBInspectable var borderColor: UIColor = UIColor.clear{
-        didSet{
-            self.layer.borderColor = borderColor.cgColor
-        }
+    @IBAction func BackAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

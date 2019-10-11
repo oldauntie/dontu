@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         center.requestAuthorization(options: options){ (granted, error) in
             if error != nil{
-                print(error)
+                print(error!)
             }
         }
         
