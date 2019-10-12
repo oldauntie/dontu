@@ -31,7 +31,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     // private var isArmed: Bool = false;
     private var numberOfArmedDevices = 0
     private var location: Location?
-    private var currentAudioRouteUid: String?
+    // private var currentAudioRouteUid: String?
+    private var currentAudioRouteName: String?
     private var scheduler: Scheduler?
     
     @IBOutlet weak var btnChild: RoundButton!
@@ -126,7 +127,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
                 return false
             }
 
-            if Route.isValidConnection() == false{
+            if Route.isValidBluetoothConnection() == false{
                 self.view.makeToast("\(portName!) Audio Bluetooh is now disconnected.\nConnect to \(portName!) or select another one from Settings", duration: 3.0, position: .bottom)
                 
                 return false
@@ -152,7 +153,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         }
         
         // read current audio route
-        currentAudioRouteUid = Route.getUid()
+        currentAudioRouteName = Route.getPortName()
         
         // manage button state and arm the app
         sender.isSelected = !sender.isSelected
@@ -172,6 +173,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         if numberOfArmedDevices > 0 {
             startLocation()
             
+            // disable Settings button
             let tabBarControllerItems = self.tabBarController?.tabBar.items
 
             if let tabArray = tabBarControllerItems {
@@ -182,6 +184,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         }else{
             stopLocation()
             
+            // enable Settings button
             let tabBarControllerItems = self.tabBarController?.tabBar.items
 
             if let tabArray = tabBarControllerItems {
@@ -197,12 +200,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     
     func startLocation() -> Void {
         // device is armed: start GPS localization
-        // @todo: TBE
         d("start GPS")
         let userDefaults = UserDefaults.standard
         let distances: [Int] = [3, 5, 8, 13, 21]
         let index = userDefaults.integer(forKey: "Distance")
-        d("\(distances[index])")
         
         location?.setDistanceFilter(distance: distances[index])
         location?.startUpdatingLocation()
@@ -210,7 +211,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     
     func stopLocation(){
         // device is disarmed: stop GPS localization
-        // @todo: TBE
         d("stop GPS")
         location?.stopUpdatingLocation()
     }
@@ -222,20 +222,22 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         if let newLocation = locations.last{
             // @todo TBE
             debugText.text += "loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)) +\n"
-            d("current: \(String(describing: currentAudioRouteUid)) Route.getUid(): \(String(describing: Route.getUid()))")
             
-            
-            if currentAudioRouteUid != nil && currentAudioRouteUid != Route.getUid(){
+            // check if route is changed
+            if currentAudioRouteName != nil && currentAudioRouteName != Route.getPortName(){
                 // set the alarm
                 scheduler?.scheduleNotification()
                 // reset current route UID
-                currentAudioRouteUid = Route.getUid()
+                currentAudioRouteName = Route.getPortName()
             }
         }
     }
     
     
     @objc func handleRouteChange(_ notification: Notification) {
+        //d(Route.getPortName(), label: "Name")
+        d(Route.getCurrentRoute())
+        
         DispatchQueue.main.async {
             _ = self.isValidBluetoothConnection()
         }

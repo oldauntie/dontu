@@ -25,7 +25,8 @@ import Foundation
 import AVFoundation
 
 class Route{
-    private static var currentUid: String?
+    // @todo TBS
+    // private static var currentUid: String?
     
     static func getCurrentRoute() -> AVAudioSessionRouteDescription{
         // carica le possibili audio route connesse e filtra solo quelle Bluetooth
@@ -41,8 +42,7 @@ class Route{
     
     static func getUid() -> String? {
         var result: String?
-        // let route  = getCurrentRoute().outputs
-        // let out = route.outputs
+
         let out = getCurrentRoute().outputs
         for element in out{
             result = element.uid
@@ -50,6 +50,7 @@ class Route{
         
         return result
     }
+    
     
     static func getPortName() -> String? {
         var result: String? = nil
@@ -91,13 +92,14 @@ class Route{
         return result
     }
     
-    public static func isValidConnection() -> Bool {
+    // @todo: change and use portName instead?
+    public static func isValidBluetoothConnection() -> Bool {
         // load user default in settings form
         let userDefaults = UserDefaults.standard
-        let uid = userDefaults.object(forKey: "UID") as? String
+        let portName = userDefaults.object(forKey: "PortName") as? String
         
         if isBluetooth(){
-            if getUid() == uid{
+            if getPortName() == portName{
                 return true
             }else{
                 return false
