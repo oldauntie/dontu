@@ -364,25 +364,33 @@
                                 </items>
                             </navigationBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VzZ-dp-gB7">
-                                <rect key="frame" x="0.0" y="427" width="375" height="191"/>
+                                <rect key="frame" x="0.0" y="474" width="375" height="81"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="191" id="vh7-Bx-S68"/>
+                                    <constraint firstAttribute="height" constant="81" id="EWE-xo-EqS"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="write other things to remember" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tss-Pv-dBF">
+                                <rect key="frame" x="0.0" y="584" width="375" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="mUE-WI-bPn" firstAttribute="centerX" secondItem="VzZ-dp-gB7" secondAttribute="centerX" id="8Rh-yZ-VDF"/>
                             <constraint firstItem="reI-Do-QS9" firstAttribute="centerX" secondItem="Psk-ht-m8n" secondAttribute="centerX" id="AZF-gG-pyq"/>
+                            <constraint firstItem="tss-Pv-dBF" firstAttribute="trailing" secondItem="VzZ-dp-gB7" secondAttribute="trailing" id="QXv-GJ-FfS"/>
+                            <constraint firstItem="tss-Pv-dBF" firstAttribute="bottom" secondItem="nyf-f7-EJG" secondAttribute="bottom" id="UfE-55-VKQ"/>
                             <constraint firstItem="reI-Do-QS9" firstAttribute="centerY" secondItem="Psk-ht-m8n" secondAttribute="centerY" id="eyG-tB-izC"/>
                             <constraint firstItem="VzZ-dp-gB7" firstAttribute="leading" secondItem="nyf-f7-EJG" secondAttribute="leading" id="hdt-Cc-ove"/>
                             <constraint firstItem="mUE-WI-bPn" firstAttribute="top" secondItem="nyf-f7-EJG" secondAttribute="top" id="jZB-Nc-5ze"/>
+                            <constraint firstItem="tss-Pv-dBF" firstAttribute="leading" secondItem="VzZ-dp-gB7" secondAttribute="leading" id="mGX-p7-6Pv"/>
                             <constraint firstItem="mUE-WI-bPn" firstAttribute="leading" secondItem="nyf-f7-EJG" secondAttribute="leading" id="oc3-S3-DA1"/>
-                            <constraint firstItem="nyf-f7-EJG" firstAttribute="bottom" secondItem="VzZ-dp-gB7" secondAttribute="bottom" id="ohl-SI-Jlh"/>
+                            <constraint firstItem="nyf-f7-EJG" firstAttribute="bottom" secondItem="VzZ-dp-gB7" secondAttribute="bottom" constant="63" id="ohl-SI-Jlh"/>
                             <constraint firstItem="nyf-f7-EJG" firstAttribute="trailing" secondItem="VzZ-dp-gB7" secondAttribute="trailing" id="teF-Ce-6cA"/>
                             <constraint firstItem="mUE-WI-bPn" firstAttribute="centerX" secondItem="reI-Do-QS9" secondAttribute="centerX" id="v38-4q-jgH"/>
                         </constraints>
@@ -394,6 +402,7 @@
                         <outlet property="btnOther" destination="mxF-wU-Gj4" id="f0l-Ak-WNz"/>
                         <outlet property="btnPet" destination="cxr-Re-JEL" id="2E8-kH-FxE"/>
                         <outlet property="debugText" destination="VzZ-dp-gB7" id="U7m-kM-Vgn"/>
+                        <outlet property="txtOther" destination="tss-Pv-dBF" id="bWV-9B-Lx0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="My1-fj-VYg" userLabel="First Responder" sceneMemberID="firstResponder"/>

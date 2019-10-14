@@ -24,6 +24,10 @@
 	<string>Location services are use to detect when you are leaving the car and warn you are forgetting something.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>requestWhenInUseAuthorization</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string></string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string></string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

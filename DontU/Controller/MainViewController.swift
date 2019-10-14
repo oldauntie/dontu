@@ -1,25 +1,7 @@
 //  Created by Old Auntie (www.oldauntie.org).
 //  Copyright © 2019 OldAuntie. All rights reserved.
 //
-//
-//  Permission is hereby granted, free of charge, to any person obtaining a
-//  copy of this software and associated documentation files (the
-//  "Software"), to deal in the Software without restriction, including
-//  without limitation the rights to use, copy, modify, merge, publish,
-//  distribute, sublicense, and/or sell copies of the Software, and to
-//  permit persons to whom the Software is furnished to do so, subject to
-//  the following conditions:
-//
-//  The above copyright notice and this permission notice shall be included
-//  in all copies or substantial portions of the Software.
-//
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-//  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-//  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-//  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-//  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-//  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-//  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 
 import UIKit
 import AVFoundation
@@ -28,16 +10,16 @@ import UserNotifications
 
 class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
     
-    // private var isArmed: Bool = false;
     private var numberOfArmedDevices = 0
     private var location: Location?
-    // private var currentAudioRouteUid: String?
     private var currentAudioRouteName: String?
     private var scheduler: Scheduler?
     
     @IBOutlet weak var btnChild: RoundButton!
     @IBOutlet weak var btnPet: RoundButton!
     @IBOutlet weak var btnOther: RoundButton!
+    
+    @IBOutlet weak var txtOther: UITextField!
     
     // used for debug purpose only
     @IBOutlet weak var debugText: UITextView!
@@ -77,12 +59,20 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
 
         // toggle queueing behavior
         ToastManager.shared.isQueueEnabled = false
+        
+        // manage keyboard behaviour
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tap)
     }
     
 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        /*
         if numberOfArmedDevices > 0 {
             // create a new style
             var style = ToastStyle()
@@ -95,6 +85,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         }else{
             _ = self.isValidBluetoothConnection()
         }
+        */
+        _ = self.isValidBluetoothConnection()
     }
     
 
@@ -118,17 +110,17 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     func isValidBluetoothConnection() -> Bool{
         // load user default in settings form
         let userDefaults = UserDefaults.standard
-        let uid = userDefaults.object(forKey: "UID") as? String
+        // let uid = userDefaults.object(forKey: "UID") as? String
         let portName = userDefaults.object(forKey: "PortName") as? String
         if location?.isUpdatingLocation == false{
-            if uid == nil || uid == ""{
+            if portName == nil || portName == ""{
                 self.view.makeToast("No Bluetooh connection configued yet. Select one in settings", duration: 5.0, position: .bottom)
                 
                 return false
             }
 
             if Route.isValidBluetoothConnection() == false{
-                self.view.makeToast("\(portName!) Audio Bluetooh is now disconnected.\nConnect to \(portName!) or select another one from Settings", duration: 3.0, position: .bottom)
+                self.view.makeToast("\(portName!) Audio Bluetooh is disconnected.\nConnect to \(portName!) or select another one from Settings", duration: 3.0, position: .bottom)
                 
                 return false
             }else{
@@ -146,6 +138,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     
     private func changeState(_ sender: UIButton)
     {
+        // check if it is connected to the right bluetooth device
         if location?.isUpdatingLocation == false{
             if isValidBluetoothConnection() == false{
                 return
@@ -169,32 +162,29 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             numberOfArmedDevices -= 1
         }
         
+        // get tab bar item to control settings button
+        let tabBarControllerItems = self.tabBarController?.tabBar.items
+
         // start / stop GPS services
         if numberOfArmedDevices > 0 {
             startLocation()
             
             // disable Settings button
-            let tabBarControllerItems = self.tabBarController?.tabBar.items
-
             if let tabArray = tabBarControllerItems {
-                let tabBarItem1 = tabArray[1]
+                let settings_button = tabArray[1]
                 
-                tabBarItem1.isEnabled = false
+                settings_button.isEnabled = false
             }
         }else{
             stopLocation()
-            
-            // enable Settings button
-            let tabBarControllerItems = self.tabBarController?.tabBar.items
 
+            // enable settings button
             if let tabArray = tabBarControllerItems {
-                let tabBarItem1 = tabArray[1]
+                let settings_button = tabArray[1]
                 
-                tabBarItem1.isEnabled = true
+                settings_button.isEnabled = true
             }
         }
-        
-        
     }
     
     
@@ -215,9 +205,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         location?.stopUpdatingLocation()
     }
     
-    
-
-    
+    // delegate invoked while updating GPS
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         if let newLocation = locations.last{
             // @todo TBE
@@ -227,19 +215,73 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             if currentAudioRouteName != nil && currentAudioRouteName != Route.getPortName(){
                 // set the alarm
                 scheduler?.scheduleNotification()
-                // reset current route UID
-                currentAudioRouteName = Route.getPortName()
+                
+                /*
+                // generate an alert on main screen (fire the alarm)
+                var message = "You are probably forgetting something..."
+                if txtOther.text != "" {
+                    message += "\n ... and don't forget " + txtOther.text!
+                }
+                alert(message: message)
+                
+                btnChild.backgroundColor = UIColor.white
+                btnPet.backgroundColor = UIColor.white
+                btnOther.backgroundColor = UIColor.white
+                
+                // disarm all
+                numberOfArmedDevices = 0
+                */
+                
+                // Make toast with an image, title, and completion closure
+                self.view.makeToast("You are forgetting something behind you", duration: 20.0, position: .center, title: "Warning !!!", image: UIImage(named: "dontu.png")) { didTap in
+                    if didTap {
+                        print("completion from tap")
+                        // stop location service
+                        self.scheduler?.stopAllNotification()
+                        self.stopLocation()
+                        self.btnChild.backgroundColor = .white
+                        
+                        // reset current route UID
+                        self.currentAudioRouteName = Route.getPortName()
+                    } else {
+                        print("completion without tap")
+                    }
+                }
+
             }
         }
     }
     
-    
     @objc func handleRouteChange(_ notification: Notification) {
         //d(Route.getPortName(), label: "Name")
-        d(Route.getCurrentRoute())
+        // @todo TBE
+        // d(Route.getCurrentRoute())
         
         DispatchQueue.main.async {
             _ = self.isValidBluetoothConnection()
+        }
+    }
+    
+    
+    func alert(message: String, title: String = "") {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(OKAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
         }
     }
 
