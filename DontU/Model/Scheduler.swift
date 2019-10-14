@@ -8,6 +8,7 @@ import UserNotifications
 
 class Scheduler: NSObject, UNUserNotificationCenterDelegate{
 
+    public static var sharedInstance = Scheduler()
     override init() {
         let center = UNUserNotificationCenter.current()
         

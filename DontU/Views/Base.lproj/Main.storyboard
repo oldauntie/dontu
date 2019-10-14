@@ -292,79 +292,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="reI-Do-QS9" userLabel="Stack View Main">
-                                <rect key="frame" x="111" y="96" width="153" height="475"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMt-xe-JuM" userLabel="Child Button" customClass="RoundButton" customModule="DontU" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="153" height="153"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="153" id="JhS-8j-k5c"/>
-                                            <constraint firstAttribute="width" secondItem="PMt-xe-JuM" secondAttribute="height" multiplier="1:1" id="X2o-rM-Ecc"/>
-                                        </constraints>
-                                        <state key="normal" image="child_friendly"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="71"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="EnableChildControl:" destination="7Xa-rp-jJw" eventType="touchUpInside" id="UCJ-c7-yea"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxr-Re-JEL" userLabel="Pet Button" customClass="RoundButton" customModule="DontU" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="161" width="153" height="153"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="cxr-Re-JEL" secondAttribute="height" multiplier="1:1" id="5d8-KC-p1U"/>
-                                            <constraint firstAttribute="width" constant="153" id="qpA-TX-JDD"/>
-                                        </constraints>
-                                        <state key="normal" image="pets"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="71"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="EnablePetControl:" destination="7Xa-rp-jJw" eventType="touchUpInside" id="UBD-L0-cMe"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxF-wU-Gj4" userLabel="Other Button" customClass="RoundButton" customModule="DontU" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="322" width="153" height="153"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="mxF-wU-Gj4" secondAttribute="height" multiplier="1:1" id="FqQ-Ld-d4w"/>
-                                            <constraint firstAttribute="width" constant="153" id="tUc-nQ-kl7"/>
-                                        </constraints>
-                                        <state key="normal" image="loyalty"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="71"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="EnableOtherControl:" destination="7Xa-rp-jJw" eventType="touchUpInside" id="D5t-Pu-b2X"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUE-WI-bPn">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="3" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Don't U (Forget About Me)" id="8bl-Yj-B3D"/>
                                 </items>
                             </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="mWJ-Q6-xAk" userLabel="Stack View Other">
+                                <rect key="frame" x="0.0" y="561.5" width="375" height="48.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose an optional reminder (e.g. Don't forget the baby bottle!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIX-96-VNj">
+                                        <rect key="frame" x="0.0" y="0.0" width="360.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="write other things to remember" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tss-Pv-dBF">
+                                        <rect key="frame" x="0.0" y="14.5" width="372" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="tss-Pv-dBF" secondAttribute="trailing" constant="3" id="Tu3-Bp-uhF"/>
+                                </constraints>
+                            </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VzZ-dp-gB7">
-                                <rect key="frame" x="0.0" y="474" width="375" height="81"/>
+                                <rect key="frame" x="0.0" y="471.5" width="375" height="81"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="81" id="EWE-xo-EqS"/>
@@ -373,26 +326,111 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="write other things to remember" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tss-Pv-dBF">
-                                <rect key="frame" x="0.0" y="584" width="375" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vSo-YL-sbt">
+                                <rect key="frame" x="126" y="141" width="123" height="385"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="reI-Do-QS9">
+                                        <rect key="frame" x="0.0" y="0.0" width="123" height="385"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMt-xe-JuM" userLabel="Child Button" customClass="RoundButton" customModule="DontU" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="123" height="123"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="123" id="Cxw-mU-IYY"/>
+                                                    <constraint firstAttribute="width" constant="123" id="iII-a8-BVX"/>
+                                                </constraints>
+                                                <state key="normal" image="child_friendly"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="51"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="EnableChildControl:" destination="7Xa-rp-jJw" eventType="touchUpInside" id="UCJ-c7-yea"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxr-Re-JEL" userLabel="Pet Button" customClass="RoundButton" customModule="DontU" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="131" width="123" height="123"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="123" id="doU-e0-Mzs"/>
+                                                    <constraint firstAttribute="height" constant="123" id="nZN-Wg-MjJ"/>
+                                                </constraints>
+                                                <state key="normal" image="pets"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="51"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="EnablePetControl:" destination="7Xa-rp-jJw" eventType="touchUpInside" id="UBD-L0-cMe"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxF-wU-Gj4" userLabel="Other Button" customClass="RoundButton" customModule="DontU" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="262" width="123" height="123"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="123" id="qC9-dr-6RW"/>
+                                                    <constraint firstAttribute="height" constant="123" id="sG9-gE-4dk"/>
+                                                </constraints>
+                                                <state key="normal" image="loyalty"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="51"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="EnableOtherControl:" destination="7Xa-rp-jJw" eventType="touchUpInside" id="D5t-Pu-b2X"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="123" id="3xa-Wq-Pi9"/>
+                                            <constraint firstAttribute="height" constant="385" id="Nch-7i-zkg"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nF4-1P-Pkq" userLabel="Stack View Bluetooth">
+                                <rect key="frame" x="16" y="109" width="135.5" height="24"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetooth_icon" translatesAutoresizingMaskIntoConstraints="NO" id="9zK-xD-Afl">
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connected to A6S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qC9-av-d22">
+                                        <rect key="frame" x="32" y="0.0" width="103.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="mUE-WI-bPn" firstAttribute="centerX" secondItem="VzZ-dp-gB7" secondAttribute="centerX" id="8Rh-yZ-VDF"/>
-                            <constraint firstItem="reI-Do-QS9" firstAttribute="centerX" secondItem="Psk-ht-m8n" secondAttribute="centerX" id="AZF-gG-pyq"/>
-                            <constraint firstItem="tss-Pv-dBF" firstAttribute="trailing" secondItem="VzZ-dp-gB7" secondAttribute="trailing" id="QXv-GJ-FfS"/>
-                            <constraint firstItem="tss-Pv-dBF" firstAttribute="bottom" secondItem="nyf-f7-EJG" secondAttribute="bottom" id="UfE-55-VKQ"/>
-                            <constraint firstItem="reI-Do-QS9" firstAttribute="centerY" secondItem="Psk-ht-m8n" secondAttribute="centerY" id="eyG-tB-izC"/>
-                            <constraint firstItem="VzZ-dp-gB7" firstAttribute="leading" secondItem="nyf-f7-EJG" secondAttribute="leading" id="hdt-Cc-ove"/>
-                            <constraint firstItem="mUE-WI-bPn" firstAttribute="top" secondItem="nyf-f7-EJG" secondAttribute="top" id="jZB-Nc-5ze"/>
-                            <constraint firstItem="tss-Pv-dBF" firstAttribute="leading" secondItem="VzZ-dp-gB7" secondAttribute="leading" id="mGX-p7-6Pv"/>
-                            <constraint firstItem="mUE-WI-bPn" firstAttribute="leading" secondItem="nyf-f7-EJG" secondAttribute="leading" id="oc3-S3-DA1"/>
-                            <constraint firstItem="nyf-f7-EJG" firstAttribute="bottom" secondItem="VzZ-dp-gB7" secondAttribute="bottom" constant="63" id="ohl-SI-Jlh"/>
-                            <constraint firstItem="nyf-f7-EJG" firstAttribute="trailing" secondItem="VzZ-dp-gB7" secondAttribute="trailing" id="teF-Ce-6cA"/>
-                            <constraint firstItem="mUE-WI-bPn" firstAttribute="centerX" secondItem="reI-Do-QS9" secondAttribute="centerX" id="v38-4q-jgH"/>
+                            <constraint firstItem="vSo-YL-sbt" firstAttribute="centerX" secondItem="Psk-ht-m8n" secondAttribute="centerX" id="2As-64-AJg"/>
+                            <constraint firstItem="mUE-WI-bPn" firstAttribute="top" secondItem="nyf-f7-EJG" secondAttribute="top" constant="3" id="8uB-m9-8Mg"/>
+                            <constraint firstItem="mUE-WI-bPn" firstAttribute="leading" secondItem="VzZ-dp-gB7" secondAttribute="leading" id="AHZ-MK-8zN"/>
+                            <constraint firstItem="VzZ-dp-gB7" firstAttribute="trailing" secondItem="mWJ-Q6-xAk" secondAttribute="trailing" id="L3u-OH-Ey9"/>
+                            <constraint firstItem="VzZ-dp-gB7" firstAttribute="leading" secondItem="mWJ-Q6-xAk" secondAttribute="leading" id="PLL-J6-cgp"/>
+                            <constraint firstItem="vSo-YL-sbt" firstAttribute="centerY" secondItem="Psk-ht-m8n" secondAttribute="centerY" id="W3s-Uo-hb9"/>
+                            <constraint firstItem="nyf-f7-EJG" firstAttribute="trailing" secondItem="mWJ-Q6-xAk" secondAttribute="trailing" id="XaO-UV-CrK"/>
+                            <constraint firstItem="mWJ-Q6-xAk" firstAttribute="centerX" secondItem="Psk-ht-m8n" secondAttribute="centerX" id="XjC-gS-gcQ"/>
+                            <constraint firstItem="nF4-1P-Pkq" firstAttribute="leading" secondItem="Psk-ht-m8n" secondAttribute="leadingMargin" id="ab4-ZA-7wk"/>
+                            <constraint firstItem="mUE-WI-bPn" firstAttribute="trailing" secondItem="VzZ-dp-gB7" secondAttribute="trailing" id="bHC-zd-1QI"/>
+                            <constraint firstItem="vSo-YL-sbt" firstAttribute="top" secondItem="nF4-1P-Pkq" secondAttribute="bottom" constant="8" id="enr-Zu-Jnt"/>
+                            <constraint firstItem="mWJ-Q6-xAk" firstAttribute="leading" secondItem="nyf-f7-EJG" secondAttribute="leading" id="glP-Z8-0U2"/>
+                            <constraint firstItem="nyf-f7-EJG" firstAttribute="bottom" secondItem="mWJ-Q6-xAk" secondAttribute="bottom" constant="8" id="kXE-mN-aQB"/>
+                            <constraint firstItem="mWJ-Q6-xAk" firstAttribute="top" secondItem="VzZ-dp-gB7" secondAttribute="bottom" constant="9" id="rgg-fB-DgI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nyf-f7-EJG"/>
                     </view>
@@ -430,6 +468,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bluetooth_icon" width="24" height="24"/>
         <image name="child_friendly" width="48" height="48"/>
         <image name="child_friendly_icon" width="36" height="36"/>
         <image name="dontu" width="60" height="60"/>

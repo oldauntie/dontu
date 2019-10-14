@@ -32,7 +32,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         location?.locationManager.delegate = self
         
         // used to setup the alarm
-        scheduler = Scheduler()
+        scheduler = Scheduler.sharedInstance
         
         // used to check changes in AudioRoute and enable/disable buttons
         let notificationCenter = NotificationCenter.default
@@ -139,12 +139,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         
         if(sender.isSelected == true)
         {
-            sender.backgroundColor = UIColor.orange
+            sender.backgroundColor = .systemTeal
             numberOfArmedDevices += 1
         }
         else
         {
-            sender.backgroundColor = UIColor.white
+            sender.backgroundColor = .white
             numberOfArmedDevices -= 1
         }
         
@@ -181,6 +181,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         let distances: [Int] = [3, 5, 8, 13, 21]
         let index = userDefaults.integer(forKey: "Distance")
         
+        // set the grace distance
         location?.setDistanceFilter(distance: distances[index])
         location?.startUpdatingLocation()
     }
@@ -198,20 +199,27 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             debugText.text += "loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)) +\n"
             
             // check if route is changed
-            if currentAudioRouteName != nil && currentAudioRouteName != Route.getPortName(){
+            if currentAudioRouteName != nil && currentAudioRouteName !=
+                Route.getPortName(){
                 // set the alarm
                 scheduler?.scheduleNotification()
+                
+                // stop GPS
+                self.stopLocation()
                 
                 // Make toast with an image, title, and completion closure
                 self.view.makeToast("You are forgetting something behind you", duration: 3600.0, position: .center, title: "Warning !!!", image: UIImage(named: "dontu.png")) { didTap in
                     if didTap {
                         print("completion from tap")
-                        // stop location service
+                        // reset the GUI
                         self.scheduler?.stopAllNotification()
-                        self.stopLocation()
                         self.btnChild.backgroundColor = .white
                         self.btnPet.backgroundColor = .white
                         self.btnOther.backgroundColor = .white
+                        
+                        self.btnChild.isSelected = false
+                        self.btnPet.isSelected = false
+                        self.btnOther.isSelected = false
                         
                         // reset current route UID
                         self.currentAudioRouteName = Route.getPortName()
