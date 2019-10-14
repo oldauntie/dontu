@@ -26,9 +26,9 @@ class Scheduler: NSObject, UNUserNotificationCenterDelegate{
         let center = UNUserNotificationCenter.current()
 
         let content = UNMutableNotificationContent()
-        content.title = "ContU"
+        content.title = "DontU"
         content.body = "Forget about me..."
-        content.categoryIdentifier = "alarm"
+        content.categoryIdentifier = "dontu-alarm"
         content.userInfo = ["customData": "fizzbuzz"]
         // content.sound = UNNotificationSound.default
            
@@ -49,7 +49,7 @@ class Scheduler: NSObject, UNUserNotificationCenterDelegate{
         func stopAllNotification(){
             let center = UNUserNotificationCenter.current()
             center.removeAllDeliveredNotifications()
-        }
+    }
            
        func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
            completionHandler([.alert, .badge, .sound])

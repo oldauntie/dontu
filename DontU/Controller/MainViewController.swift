@@ -72,20 +72,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        /*
-        if numberOfArmedDevices > 0 {
-            // create a new style
-            var style = ToastStyle()
-            
-            // this is just one of many style options
-            style.messageColor = .green
-            
-            self.view.makeToast("App resumed (running)...", duration: 3.0, position: .bottom, style: style)
-            startLocation()
-        }else{
-            _ = self.isValidBluetoothConnection()
-        }
-        */
         _ = self.isValidBluetoothConnection()
     }
     
@@ -208,7 +194,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     // delegate invoked while updating GPS
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         if let newLocation = locations.last{
-            // @todo TBE
+            // @todo
             debugText.text += "loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)) +\n"
             
             // check if route is changed
@@ -216,30 +202,16 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
                 // set the alarm
                 scheduler?.scheduleNotification()
                 
-                /*
-                // generate an alert on main screen (fire the alarm)
-                var message = "You are probably forgetting something..."
-                if txtOther.text != "" {
-                    message += "\n ... and don't forget " + txtOther.text!
-                }
-                alert(message: message)
-                
-                btnChild.backgroundColor = UIColor.white
-                btnPet.backgroundColor = UIColor.white
-                btnOther.backgroundColor = UIColor.white
-                
-                // disarm all
-                numberOfArmedDevices = 0
-                */
-                
                 // Make toast with an image, title, and completion closure
-                self.view.makeToast("You are forgetting something behind you", duration: 20.0, position: .center, title: "Warning !!!", image: UIImage(named: "dontu.png")) { didTap in
+                self.view.makeToast("You are forgetting something behind you", duration: 3600.0, position: .center, title: "Warning !!!", image: UIImage(named: "dontu.png")) { didTap in
                     if didTap {
                         print("completion from tap")
                         // stop location service
                         self.scheduler?.stopAllNotification()
                         self.stopLocation()
                         self.btnChild.backgroundColor = .white
+                        self.btnPet.backgroundColor = .white
+                        self.btnOther.backgroundColor = .white
                         
                         // reset current route UID
                         self.currentAudioRouteName = Route.getPortName()
@@ -253,10 +225,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     }
     
     @objc func handleRouteChange(_ notification: Notification) {
-        //d(Route.getPortName(), label: "Name")
-        // @todo TBE
-        // d(Route.getCurrentRoute())
-        
         DispatchQueue.main.async {
             _ = self.isValidBluetoothConnection()
         }
