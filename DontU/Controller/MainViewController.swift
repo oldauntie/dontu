@@ -14,14 +14,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     private var location: Location?
     private var currentAudioRouteName: String?
     private var scheduler: Scheduler?
-    
-    private var showAdditionaMessage: Bool = false
+    private var isOtherButtonActivated: Bool = false
     
     @IBOutlet weak var btnChild: RoundButton!
     @IBOutlet weak var btnPet: RoundButton!
     @IBOutlet weak var btnOther: RoundButton!
-    
-    @IBOutlet weak var txtOther: UITextField!
     
     // used for debug purpose only
     @IBOutlet weak var txtDebug: UITextView!
@@ -69,7 +66,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
     }
-    
 
     
     override func viewDidAppear(_ animated: Bool) {
@@ -92,7 +88,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
 
     @IBAction func EnableOtherControl(_ sender: UIButton) {
         changeState(sender)
-        showAdditionaMessage = true
+        // enable / disable "other" message
+        isOtherButtonActivated = !isOtherButtonActivated
     }
     
     
@@ -190,8 +187,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         btnPet.isSelected = false
         btnOther.isSelected = false
         
-        showAdditionaMessage = false
         numberOfArmedDevices = 0
+        isOtherButtonActivated = false
         
         // reset current route UID
         currentAudioRouteName = Route.getPortName()
@@ -226,7 +223,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         if let newLocation = locations.last{
             // @todo
-            // dd(txtDebug, "loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude))")
+            dd(txtDebug, "loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude))")
             
             // check if route is changed and fire alarm
             if currentAudioRouteName != nil && currentAudioRouteName !=
@@ -237,22 +234,32 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
                 // stop GPS
                 self.stopLocation()
                 
+                // create and show the alert message
                 var message = "You are forgetting something behind you"
-                if showAdditionaMessage == true && txtOther.text != ""{
-                    message += "\n\(txtOther.text!)"
+                let userDefaults = UserDefaults.standard
+                let otherText = userDefaults.object(forKey: "Other") as? String
+                
+                // add other text from settings
+                if isOtherButtonActivated == true && otherText != "" {
+                    // read from user default in settings form
+                    message += "\n\( otherText! )"
                 }
+                
+                
                 
                 // Make toast with an image, title, and completion closure
                 self.view.makeToast(message, duration: 3600.0, position: .center, title: "Warning !!!", image: UIImage(named: "dontu.png")) { didTap in
                     if didTap {
-                        print("completion from tap")
+                        // @todo: for debug purpose only
+                        // d("completion from tap")
                         // reset the GUI and the logic
                         self.scheduler?.stopAllNotification()
                         
                         // reset App Gui and params
                         self.reset()
                     } else {
-                        print("completion without tap")
+                        // @todo: for debug purpose only
+                        // d("completion without tap")
                     }
                 }
 

@@ -293,10 +293,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VzZ-dp-gB7">
-                                <rect key="frame" x="0.0" y="471.5" width="375" height="81"/>
+                                <rect key="frame" x="0.0" y="472" width="375" height="136"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="81" id="EWE-xo-EqS"/>
+                                    <constraint firstAttribute="height" constant="136" id="ZcJ-tm-Ll5"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -308,24 +308,6 @@
                                     <navigationItem title="Don't U (Forget About Me)" id="8bl-Yj-B3D"/>
                                 </items>
                             </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="mWJ-Q6-xAk" userLabel="Stack View Other">
-                                <rect key="frame" x="0.0" y="561.5" width="375" height="48.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write other things to remember" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIX-96-VNj">
-                                        <rect key="frame" x="0.0" y="0.0" width="178" height="14.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. Don't forget the baby bottle!" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tss-Pv-dBF">
-                                        <rect key="frame" x="0.0" y="14.5" width="372" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="tss-Pv-dBF" secondAttribute="trailing" constant="3" id="Tu3-Bp-uhF"/>
-                                </constraints>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vSo-YL-sbt">
                                 <rect key="frame" x="126" y="141" width="123" height="385"/>
                                 <subviews>
@@ -417,20 +399,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="VzZ-dp-gB7" firstAttribute="leading" secondItem="mUE-WI-bPn" secondAttribute="leading" id="272-Mm-wq7"/>
                             <constraint firstItem="vSo-YL-sbt" firstAttribute="centerX" secondItem="Psk-ht-m8n" secondAttribute="centerX" id="2As-64-AJg"/>
-                            <constraint firstItem="mUE-WI-bPn" firstAttribute="top" secondItem="nyf-f7-EJG" secondAttribute="top" constant="3" id="8uB-m9-8Mg"/>
-                            <constraint firstItem="mUE-WI-bPn" firstAttribute="leading" secondItem="VzZ-dp-gB7" secondAttribute="leading" id="AHZ-MK-8zN"/>
-                            <constraint firstItem="VzZ-dp-gB7" firstAttribute="trailing" secondItem="mWJ-Q6-xAk" secondAttribute="trailing" id="L3u-OH-Ey9"/>
-                            <constraint firstItem="VzZ-dp-gB7" firstAttribute="leading" secondItem="mWJ-Q6-xAk" secondAttribute="leading" id="PLL-J6-cgp"/>
+                            <constraint firstItem="mUE-WI-bPn" firstAttribute="leading" secondItem="nyf-f7-EJG" secondAttribute="leading" id="Upt-Ko-Lgq"/>
                             <constraint firstItem="vSo-YL-sbt" firstAttribute="centerY" secondItem="Psk-ht-m8n" secondAttribute="centerY" id="W3s-Uo-hb9"/>
-                            <constraint firstItem="nyf-f7-EJG" firstAttribute="trailing" secondItem="mWJ-Q6-xAk" secondAttribute="trailing" id="XaO-UV-CrK"/>
-                            <constraint firstItem="mWJ-Q6-xAk" firstAttribute="centerX" secondItem="Psk-ht-m8n" secondAttribute="centerX" id="XjC-gS-gcQ"/>
                             <constraint firstItem="nF4-1P-Pkq" firstAttribute="leading" secondItem="Psk-ht-m8n" secondAttribute="leadingMargin" id="ab4-ZA-7wk"/>
-                            <constraint firstItem="mUE-WI-bPn" firstAttribute="trailing" secondItem="VzZ-dp-gB7" secondAttribute="trailing" id="bHC-zd-1QI"/>
+                            <constraint firstItem="mUE-WI-bPn" firstAttribute="top" secondItem="nyf-f7-EJG" secondAttribute="top" constant="3" id="cVT-5J-01t"/>
                             <constraint firstItem="vSo-YL-sbt" firstAttribute="top" secondItem="nF4-1P-Pkq" secondAttribute="bottom" constant="8" id="enr-Zu-Jnt"/>
-                            <constraint firstItem="mWJ-Q6-xAk" firstAttribute="leading" secondItem="nyf-f7-EJG" secondAttribute="leading" id="glP-Z8-0U2"/>
-                            <constraint firstItem="nyf-f7-EJG" firstAttribute="bottom" secondItem="mWJ-Q6-xAk" secondAttribute="bottom" constant="8" id="kXE-mN-aQB"/>
-                            <constraint firstItem="mWJ-Q6-xAk" firstAttribute="top" secondItem="VzZ-dp-gB7" secondAttribute="bottom" constant="9" id="rgg-fB-DgI"/>
+                            <constraint firstItem="nyf-f7-EJG" firstAttribute="bottom" secondItem="VzZ-dp-gB7" secondAttribute="bottom" constant="10" id="jnu-gj-U7a"/>
+                            <constraint firstItem="VzZ-dp-gB7" firstAttribute="trailing" secondItem="mUE-WI-bPn" secondAttribute="trailing" id="kVW-iD-zx8"/>
+                            <constraint firstItem="mUE-WI-bPn" firstAttribute="centerX" secondItem="vSo-YL-sbt" secondAttribute="centerX" id="uji-J8-KiW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nyf-f7-EJG"/>
                     </view>
@@ -440,7 +418,6 @@
                         <outlet property="btnOther" destination="mxF-wU-Gj4" id="f0l-Ak-WNz"/>
                         <outlet property="btnPet" destination="cxr-Re-JEL" id="2E8-kH-FxE"/>
                         <outlet property="txtDebug" destination="VzZ-dp-gB7" id="oqF-Jq-EiX"/>
-                        <outlet property="txtOther" destination="tss-Pv-dBF" id="bWV-9B-Lx0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="My1-fj-VYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
