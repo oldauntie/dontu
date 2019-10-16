@@ -36,10 +36,13 @@ class Scheduler: NSObject, UNUserNotificationCenterDelegate{
         let soundName = UNNotificationSoundName("bell.mp3")
         content.sound = UNNotificationSound(named: soundName)
 
+        // @todo: unused yet TBE
+        /*
         var dateComponents = DateComponents()
         dateComponents.hour = 10
         dateComponents.minute = 30
-            
+        */
+        
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
 
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)

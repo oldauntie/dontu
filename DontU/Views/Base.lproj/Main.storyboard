@@ -311,25 +311,37 @@
                                             <rect key="frame" x="112.5" y="5.5" width="150" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bluetooth_icon" translatesAutoresizingMaskIntoConstraints="NO" id="lp0-xZ-N5V">
-                                                    <rect key="frame" x="0.0" y="21" width="16" height="16"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetooth_icon" translatesAutoresizingMaskIntoConstraints="NO" id="lp0-xZ-N5V">
+                                                    <rect key="frame" x="0.0" y="21" width="24" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="AoB-vk-Utq"/>
+                                                        <constraint firstAttribute="width" constant="16" id="dHY-eM-RsU"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="16" id="fZx-vX-qrb"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dont U" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XA-Yj-1lM">
-                                                    <rect key="frame" x="54" y="0.0" width="54" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dont U" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XA-Yj-1lM">
+                                                    <rect key="frame" x="48" y="0.0" width="54" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="_BLUETOOTH_STATUS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRq-Qt-wI1">
-                                                    <rect key="frame" x="21" y="22" width="119" height="14"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_BLUETOOTH_STATUS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRq-Qt-wI1">
+                                                    <rect key="frame" x="15.5" y="22" width="119" height="14"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3XA-Yj-1lM" firstAttribute="top" secondItem="fCh-uX-9ao" secondAttribute="top" id="SCB-sv-lIh"/>
+                                                <constraint firstItem="lp0-xZ-N5V" firstAttribute="leading" secondItem="fCh-uX-9ao" secondAttribute="leadingMargin" id="VvS-h9-0uo"/>
+                                                <constraint firstItem="mRq-Qt-wI1" firstAttribute="top" secondItem="3XA-Yj-1lM" secondAttribute="bottom" constant="1" id="ZhG-x5-PyY"/>
+                                                <constraint firstAttribute="bottom" secondItem="lp0-xZ-N5V" secondAttribute="bottom" constant="-4" id="cP2-EW-Oyy"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="lp0-xZ-N5V" secondAttribute="trailing" constant="126" id="eD2-a9-Krr"/>
+                                                <constraint firstItem="mRq-Qt-wI1" firstAttribute="centerX" secondItem="fCh-uX-9ao" secondAttribute="centerX" id="iXS-jI-PN4"/>
+                                                <constraint firstItem="3XA-Yj-1lM" firstAttribute="centerX" secondItem="fCh-uX-9ao" secondAttribute="centerX" id="vJK-td-NIP"/>
+                                                <constraint firstItem="lp0-xZ-N5V" firstAttribute="top" secondItem="fCh-uX-9ao" secondAttribute="top" constant="21" id="wHI-87-ktk"/>
+                                            </constraints>
                                         </view>
                                     </navigationItem>
                                 </items>

@@ -154,8 +154,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             numberOfArmedDevices -= 1
         }
         
-        // @todo tbe
-        dd(txtDebug, numberOfArmedDevices)
         
         // start / stop GPS services
         if numberOfArmedDevices > 0 {
@@ -203,7 +201,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         toggleSettingsButton(enabled: true)
         
         // reset bluetooth
-        isValidBluetoothConnection()
+        _ = isValidBluetoothConnection()
         
         // @todo tbe
         dd(txtDebug, numberOfArmedDevices)
