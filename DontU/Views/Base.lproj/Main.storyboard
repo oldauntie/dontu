@@ -292,30 +292,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUE-WI-bPn">
-                                <rect key="frame" x="0.0" y="3" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Don't U (Forget About Me)" id="8bl-Yj-B3D"/>
-                                </items>
-                            </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="mWJ-Q6-xAk" userLabel="Stack View Other">
-                                <rect key="frame" x="0.0" y="561.5" width="375" height="48.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose an optional reminder (e.g. Don't forget the baby bottle!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIX-96-VNj">
-                                        <rect key="frame" x="0.0" y="0.0" width="360.5" height="14.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="write other things to remember" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tss-Pv-dBF">
-                                        <rect key="frame" x="0.0" y="14.5" width="372" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="tss-Pv-dBF" secondAttribute="trailing" constant="3" id="Tu3-Bp-uhF"/>
-                                </constraints>
-                            </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VzZ-dp-gB7">
                                 <rect key="frame" x="0.0" y="471.5" width="375" height="81"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -326,6 +302,30 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUE-WI-bPn">
+                                <rect key="frame" x="0.0" y="3" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Don't U (Forget About Me)" id="8bl-Yj-B3D"/>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="mWJ-Q6-xAk" userLabel="Stack View Other">
+                                <rect key="frame" x="0.0" y="561.5" width="375" height="48.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write other things to remember" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIX-96-VNj">
+                                        <rect key="frame" x="0.0" y="0.0" width="178" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. Don't forget the baby bottle!" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tss-Pv-dBF">
+                                        <rect key="frame" x="0.0" y="14.5" width="372" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="tss-Pv-dBF" secondAttribute="trailing" constant="3" id="Tu3-Bp-uhF"/>
+                                </constraints>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vSo-YL-sbt">
                                 <rect key="frame" x="126" y="141" width="123" height="385"/>
                                 <subviews>
@@ -439,7 +439,7 @@
                         <outlet property="btnChild" destination="PMt-xe-JuM" id="jfi-N8-jrY"/>
                         <outlet property="btnOther" destination="mxF-wU-Gj4" id="f0l-Ak-WNz"/>
                         <outlet property="btnPet" destination="cxr-Re-JEL" id="2E8-kH-FxE"/>
-                        <outlet property="debugText" destination="VzZ-dp-gB7" id="U7m-kM-Vgn"/>
+                        <outlet property="txtDebug" destination="VzZ-dp-gB7" id="oqF-Jq-EiX"/>
                         <outlet property="txtOther" destination="tss-Pv-dBF" id="bWV-9B-Lx0"/>
                     </connections>
                 </viewController>

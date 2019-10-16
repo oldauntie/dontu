@@ -24,7 +24,7 @@
 import Foundation
 
 struct Global {
-    static var debug : Bool = false
+    static var debug : Bool = true
 }
 
 /* todo:

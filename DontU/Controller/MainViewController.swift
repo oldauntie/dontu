@@ -15,6 +15,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     private var currentAudioRouteName: String?
     private var scheduler: Scheduler?
     
+    private var showAdditionaMessage: Bool = false
+    
     @IBOutlet weak var btnChild: RoundButton!
     @IBOutlet weak var btnPet: RoundButton!
     @IBOutlet weak var btnOther: RoundButton!
@@ -22,8 +24,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     @IBOutlet weak var txtOther: UITextField!
     
     // used for debug purpose only
-    @IBOutlet weak var debugText: UITextView!
-
+    @IBOutlet weak var txtDebug: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +44,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
                                        object: nil)
         
         // hide / show debug textView
-        debugText.isHidden = !Global.debug
+        txtDebug.isHidden = !Global.debug
         
         // create a new style
         var style = ToastStyle()
@@ -90,6 +92,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
 
     @IBAction func EnableOtherControl(_ sender: UIButton) {
         changeState(sender)
+        showAdditionaMessage = true
     }
     
     
@@ -148,6 +151,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             numberOfArmedDevices -= 1
         }
         
+        // @todo tbe
+        dd(txtDebug, numberOfArmedDevices)
+        
         // get tab bar item to control settings button
         let tabBarControllerItems = self.tabBarController?.tabBar.items
 
@@ -196,7 +202,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         if let newLocation = locations.last{
             // @todo
-            debugText.text += "loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)) +\n"
+            // dd(txtDebug, "loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude))")
             
             // check if route is changed
             if currentAudioRouteName != nil && currentAudioRouteName !=
@@ -207,11 +213,16 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
                 // stop GPS
                 self.stopLocation()
                 
+                var message = "You are forgetting something behind you"
+                if showAdditionaMessage == true && txtOther.text != ""{
+                    message += "\n\(txtOther.text!)"
+                }
+                
                 // Make toast with an image, title, and completion closure
-                self.view.makeToast("You are forgetting something behind you", duration: 3600.0, position: .center, title: "Warning !!!", image: UIImage(named: "dontu.png")) { didTap in
+                self.view.makeToast(message, duration: 3600.0, position: .center, title: "Warning !!!", image: UIImage(named: "dontu.png")) { didTap in
                     if didTap {
                         print("completion from tap")
-                        // reset the GUI
+                        // reset the GUI and the logic
                         self.scheduler?.stopAllNotification()
                         self.btnChild.backgroundColor = .white
                         self.btnPet.backgroundColor = .white
@@ -221,8 +232,16 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
                         self.btnPet.isSelected = false
                         self.btnOther.isSelected = false
                         
+                        self.showAdditionaMessage = false
+                        self.numberOfArmedDevices = 0
+                        
                         // reset current route UID
                         self.currentAudioRouteName = Route.getPortName()
+                        
+                        // @todo tbe
+                        dd(self.txtDebug, self.numberOfArmedDevices)
+                        dd(self.txtDebug, self.currentAudioRouteName)
+
                     } else {
                         print("completion without tap")
                     }
