@@ -20,6 +20,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     @IBOutlet weak var btnPet: RoundButton!
     @IBOutlet weak var btnOther: RoundButton!
     
+    @IBOutlet weak var lblBluetoothStatus: UILabel!
     // used for debug purpose only
     @IBOutlet weak var txtDebug: UITextView!
     
@@ -102,11 +103,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             if portName == nil || portName == ""{
                 self.view.makeToast("No Bluetooh connection configued yet. Select one in settings", duration: 5.0, position: .bottom)
                 
+                self.lblBluetoothStatus.text = "Not configued yet"
                 return false
             }
 
             if Route.isValidBluetoothConnection() == false{
-                self.view.makeToast("\(portName!) Audio Bluetooh is disconnected.\nConnect to \(portName!) or select another one from Settings", duration: 3.0, position: .bottom)
+                self.view.makeToast("\(portName!) Car Audio Kit is disconnected.\nConnect to \(portName!) or select another one from Settings", duration: 3.0, position: .bottom)
+                
+                self.lblBluetoothStatus.text = "Disconnected"
                 
                 return false
             }else{
@@ -116,6 +120,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
                 // this is just one of many style options
                 style.messageColor = .green
                 self.view.makeToast("Connected to \(Route.getPortName()!).", duration: 3.0, position: .bottom, style: style)
+                
+                self.lblBluetoothStatus.text = "Connected to \(Route.getPortName()!)"
             }
         }
         return true
@@ -196,6 +202,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         // enable settings button
         toggleSettingsButton(enabled: true)
         
+        // reset bluetooth
+        isValidBluetoothConnection()
+        
         // @todo tbe
         dd(txtDebug, numberOfArmedDevices)
         dd(txtDebug, currentAudioRouteName)
@@ -232,6 +241,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
                 Route.getPortName(){
                 // set the alarm
                 scheduler?.scheduleNotification()
+                
                 
                 // stop GPS
                 self.stopLocation()

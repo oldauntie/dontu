@@ -224,7 +224,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="a3I-hm-Zsh">
                                 <rect key="frame" x="37" y="427" width="310" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">My Family  Simple Minds for thier wonderful music and for having inspired the name of this app  Old Auntie (www.oldauntie.org) for it gave me the idea that things can change if you start thinking that things must change. </string>
+                                <string key="text">My Family Old Auntie (www.oldauntie.org) for it gave me the idea that things can change if you start thinking that things must change. Simple Minds for their wonderful inspiring music hoping to see them soon in Florence again!</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -305,7 +305,33 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUE-WI-bPn">
                                 <rect key="frame" x="0.0" y="3" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Don't U (Forget About Me)" id="8bl-Yj-B3D"/>
+                                    <navigationItem id="XYR-vN-ZaW">
+                                        <nil key="title"/>
+                                        <view key="titleView" opaque="NO" contentMode="scaleToFill" id="fCh-uX-9ao">
+                                            <rect key="frame" x="112.5" y="5.5" width="150" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bluetooth_icon" translatesAutoresizingMaskIntoConstraints="NO" id="lp0-xZ-N5V">
+                                                    <rect key="frame" x="0.0" y="21" width="16" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dont U" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XA-Yj-1lM">
+                                                    <rect key="frame" x="54" y="0.0" width="54" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="_BLUETOOTH_STATUS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRq-Qt-wI1">
+                                                    <rect key="frame" x="21" y="22" width="119" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vSo-YL-sbt">
@@ -382,20 +408,6 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nF4-1P-Pkq" userLabel="Stack View Bluetooth">
-                                <rect key="frame" x="16" y="109" width="135.5" height="24"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetooth_icon" translatesAutoresizingMaskIntoConstraints="NO" id="9zK-xD-Afl">
-                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connected to A6S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qC9-av-d22">
-                                        <rect key="frame" x="32" y="0.0" width="103.5" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -403,9 +415,7 @@
                             <constraint firstItem="vSo-YL-sbt" firstAttribute="centerX" secondItem="Psk-ht-m8n" secondAttribute="centerX" id="2As-64-AJg"/>
                             <constraint firstItem="mUE-WI-bPn" firstAttribute="leading" secondItem="nyf-f7-EJG" secondAttribute="leading" id="Upt-Ko-Lgq"/>
                             <constraint firstItem="vSo-YL-sbt" firstAttribute="centerY" secondItem="Psk-ht-m8n" secondAttribute="centerY" id="W3s-Uo-hb9"/>
-                            <constraint firstItem="nF4-1P-Pkq" firstAttribute="leading" secondItem="Psk-ht-m8n" secondAttribute="leadingMargin" id="ab4-ZA-7wk"/>
                             <constraint firstItem="mUE-WI-bPn" firstAttribute="top" secondItem="nyf-f7-EJG" secondAttribute="top" constant="3" id="cVT-5J-01t"/>
-                            <constraint firstItem="vSo-YL-sbt" firstAttribute="top" secondItem="nF4-1P-Pkq" secondAttribute="bottom" constant="8" id="enr-Zu-Jnt"/>
                             <constraint firstItem="nyf-f7-EJG" firstAttribute="bottom" secondItem="VzZ-dp-gB7" secondAttribute="bottom" constant="10" id="jnu-gj-U7a"/>
                             <constraint firstItem="VzZ-dp-gB7" firstAttribute="trailing" secondItem="mUE-WI-bPn" secondAttribute="trailing" id="kVW-iD-zx8"/>
                             <constraint firstItem="mUE-WI-bPn" firstAttribute="centerX" secondItem="vSo-YL-sbt" secondAttribute="centerX" id="uji-J8-KiW"/>
@@ -417,6 +427,7 @@
                         <outlet property="btnChild" destination="PMt-xe-JuM" id="jfi-N8-jrY"/>
                         <outlet property="btnOther" destination="mxF-wU-Gj4" id="f0l-Ak-WNz"/>
                         <outlet property="btnPet" destination="cxr-Re-JEL" id="2E8-kH-FxE"/>
+                        <outlet property="lblBluetoothStatus" destination="mRq-Qt-wI1" id="ea1-ps-nZZ"/>
                         <outlet property="txtDebug" destination="VzZ-dp-gB7" id="oqF-Jq-EiX"/>
                     </connections>
                 </viewController>
