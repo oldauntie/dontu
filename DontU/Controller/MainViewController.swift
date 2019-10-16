@@ -154,31 +154,55 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
         // @todo tbe
         dd(txtDebug, numberOfArmedDevices)
         
-        // get tab bar item to control settings button
-        let tabBarControllerItems = self.tabBarController?.tabBar.items
-
         // start / stop GPS services
         if numberOfArmedDevices > 0 {
             startLocation()
             
-            // disable Settings button
-            if let tabArray = tabBarControllerItems {
-                let settings_button = tabArray[1]
-                
-                settings_button.isEnabled = false
-            }
+            // disable settings
+            toggleSettingsButton(enabled: false)
         }else{
             stopLocation()
 
             // enable settings button
-            if let tabArray = tabBarControllerItems {
-                let settings_button = tabArray[1]
-                
-                settings_button.isEnabled = true
-            }
+            toggleSettingsButton(enabled: true)
         }
     }
     
+    
+    func toggleSettingsButton(enabled: Bool) -> Void {
+        // get tab bar item to control settings button
+        let tabBarControllerItems = self.tabBarController?.tabBar.items
+        
+        // disable Settings button
+        if let tabArray = tabBarControllerItems {
+            let settings_button = tabArray[1]
+            
+            settings_button.isEnabled = enabled
+        }
+    }
+    
+    func reset(){
+        btnChild.backgroundColor = .white
+        btnPet.backgroundColor = .white
+        btnOther.backgroundColor = .white
+        
+        btnChild.isSelected = false
+        btnPet.isSelected = false
+        btnOther.isSelected = false
+        
+        showAdditionaMessage = false
+        numberOfArmedDevices = 0
+        
+        // reset current route UID
+        currentAudioRouteName = Route.getPortName()
+        
+        // enable settings button
+        toggleSettingsButton(enabled: true)
+        
+        // @todo tbe
+        dd(txtDebug, numberOfArmedDevices)
+        dd(txtDebug, currentAudioRouteName)
+    }
     
     func startLocation() -> Void {
         // device is armed: start GPS localization
@@ -204,7 +228,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             // @todo
             // dd(txtDebug, "loc: (\(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude))")
             
-            // check if route is changed
+            // check if route is changed and fire alarm
             if currentAudioRouteName != nil && currentAudioRouteName !=
                 Route.getPortName(){
                 // set the alarm
@@ -224,24 +248,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
                         print("completion from tap")
                         // reset the GUI and the logic
                         self.scheduler?.stopAllNotification()
-                        self.btnChild.backgroundColor = .white
-                        self.btnPet.backgroundColor = .white
-                        self.btnOther.backgroundColor = .white
                         
-                        self.btnChild.isSelected = false
-                        self.btnPet.isSelected = false
-                        self.btnOther.isSelected = false
-                        
-                        self.showAdditionaMessage = false
-                        self.numberOfArmedDevices = 0
-                        
-                        // reset current route UID
-                        self.currentAudioRouteName = Route.getPortName()
-                        
-                        // @todo tbe
-                        dd(self.txtDebug, self.numberOfArmedDevices)
-                        dd(self.txtDebug, self.currentAudioRouteName)
-
+                        // reset App Gui and params
+                        self.reset()
                     } else {
                         print("completion without tap")
                     }
@@ -279,15 +288,4 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
             self.view.frame.origin.y = 0
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
 }
