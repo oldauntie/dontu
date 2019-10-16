@@ -202,20 +202,22 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UNUserNot
     }
     
     func startLocation() -> Void {
-        // device is armed: start GPS localization
-        d("start GPS")
-        let userDefaults = UserDefaults.standard
-        let distances: [Int] = [3, 5, 8, 13, 21]
-        let index = userDefaults.integer(forKey: "Distance")
-        
-        // set the grace distance
-        location?.setDistanceFilter(distance: distances[index])
-        location?.startUpdatingLocation()
+        // if location is not running starts GPS localization
+        if location?.isUpdatingLocation == false{
+            dd(txtDebug, "start GPS")
+            let userDefaults = UserDefaults.standard
+            let distances: [Int] = [3, 5, 8, 13, 21]
+            let index = userDefaults.integer(forKey: "Distance")
+            
+            // set the grace distance
+            location?.setDistanceFilter(distance: distances[index])
+            location?.startUpdatingLocation()
+        }
     }
     
     func stopLocation(){
         // device is disarmed: stop GPS localization
-        d("stop GPS")
+        dd(txtDebug, "stop GPS")
         location?.stopUpdatingLocation()
     }
     
